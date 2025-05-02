@@ -1,16 +1,16 @@
-{
-    "type": "integrals",
-    "problems":
-    [
-        {
-            "prompt": "Consider the following integral:$I(x)=\\int_0^\\infty \\frac{t^{x-1}e^{-t}}{t+x}dt$In the limit$x\\to\\infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\\boxed{}$ latex environment.",
-            "solution": "$\\boxed{I(x)\\sim \\frac{\\Gamma(x)}{2x}}$",
-            "parameters": "$x$"
-        },
-        {
-            "prompt": "Consider the following integral:$\\left|\\frac{\\int_0^\\infty \\frac{t^{x-1}}{t+x}e^{-t^{1/4}}dt}{\\int_0^\\infty t^{x-1}e^{-t^{1/4}}dt}\\right|$In the limit$x \\rightarrow \\infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\\boxed{}$ latex environment.",
-            "solution": "$\\boxed{I(x)=\\left(\\frac{x}{0.25}\\right)^{-1/0.25}}$",
-            "parameters": "$x$"
-        }        
-    ]
-}
+[
+    {
+        "prompt": "Consider the following integral:$I(x)=\\int_0^\\infty \\frac{t^{x-1}e^{-t}}{t+x}dt$In the limit$x\\to\\infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\\boxed{}$ latex environment.",
+        "solution": "$\\boxed{I(x)\\sim \\frac{\\Gamma(x)}{2x}}$",
+        "parameters": "$x$",    
+        "type": "integrals",
+        "index": 0
+    },
+    {
+        "prompt": "Consider the following integral:$\\left|\\frac{\\int_0^\\infty \\frac{t^{x-1}}{t+x}e^{-t^{1/4}}dt}{\\int_0^\\infty t^{x-1}e^{-t^{1/4}}dt}\\right|$In the limit$x \\rightarrow \\infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\\boxed{}$ latex environment.",
+        "solution": "$\\boxed{I(x)=\\left(\\frac{x}{0.25}\\right)^{-1/0.25}}$",
+        "parameters": "$x$",
+        "type": "integrals",
+        "index": 1
+    }        
+]
