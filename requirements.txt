@@ -1,0 +1,2 @@
+pyyaml>=6.0
+huggingface_hub>=0.16.4
