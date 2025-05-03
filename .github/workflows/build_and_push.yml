@@ -10,34 +10,72 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      HF_REPO:  ${{ secrets.HF_REPO }}
+      HF_REPO: ${{ secrets.HF_REPO }} # e.g., 'username/my-dataset'
+      HF_DATASET_DIR: hf-dataset-repo # Local checkout dir name
 
     steps:
+      # 1) Checkout your GitHub repo (contains build script and source data)
       - uses: actions/checkout@v4
+
+      # 2) Set up Python
       - name: Setup Python
         uses: actions/setup-python@v4
-        with: { python-version: '3.10' }
+        with:
+          python-version: '3.10'
+
+      # 3) Install dependencies
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install pyyaml huggingface_hub
+
+      # 4) Build JSONL from YAML
       - name: Build JSONL
         run: python scripts/build_jsonl.py data_src data
-      - name: Clone HF dataset
-        run: git clone https://huggingface.co/${HF_REPO} hf-data
+        # Add any necessary checks here if build might fail silently
+
+      # 5) Configure Git credential helper
+      # <<< --- ADD THIS STEP --- >>>
+      - name: Configure Git credential helper
+        run: git config --global credential.helper cache
+
+      # 6) Login to Hugging Face CLI (now it should find the helper)
+      - name: Login to Hugging Face CLI
+        run: huggingface-cli login --token $HF_TOKEN --add-to-git-credential
+
+      # 7) Clone the HF dataset repo
+      - name: Clone HF dataset repo
+        run: |
+          git clone https://huggingface.co/datasets/${HF_REPO} ${{ env.HF_DATASET_DIR }}
+
+      # 8) Copy anonymous README
       - name: Copy anonymous README
-        run: cp README_ANON.md hf-data/README.md
+        run: |
+          cp README_ANON.md ${{ env.HF_DATASET_DIR }}/README.md
+
+      # 9) Clean & sync JSONL
       - name: Sync JSONL
         run: |
-          mkdir -p hf-data/data
-          rm -f hf-data/data/*.jsonl
-          cp data/*.jsonl hf-data/data/
+          mkdir -p ${{ env.HF_DATASET_DIR }}/data
+          find ${{ env.HF_DATASET_DIR }}/data -name '*.jsonl' -delete
+          cp data/*.jsonl ${{ env.HF_DATASET_DIR }}/data/
+
+      # 10) Commit & push as “CI Bot”
       - name: Commit & Push to HF
         run: |
-          cd hf-data
-          git config user.name  "CI Bot"
-          git config user.email "ci-bot@anonymous.invalid"
-          git add README.md data/*.jsonl
-          git commit -m "Auto-update dataset" || echo "Nothing to commit"
-          git -c http.extraheader="Authorization: Bearer $HF_TOKEN" \
-              push https://huggingface.co/${HF_REPO}.git HEAD:main
+          cd ${{ env.HF_DATASET_DIR }}
+          git config user.name "CI Bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+
+          git add README.md data/ # Add data/ explicitly or use git add .
+
+          # Commit if there are staged changes
+          if ! git diff --staged --quiet; then
+            echo "Changes detected, committing..."
+            git commit -m "Auto-update dataset [skip ci]"
+            echo "Pushing changes..."
+            # Push should now use the cached credentials
+            git push origin main
+          else
+            echo "No staged changes detected. Nothing to commit."
+          fi
