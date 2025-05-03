@@ -33,9 +33,12 @@ jobs:
         run: python scripts/build_jsonl.py data_src data
 
       # 5) Clone the anonymized HF dataset repo
-      - name: Clone HF dataset
+      - name: Clone HF dataset & set auth
         run: |
-          git clone https://$HF_TOKEN@huggingface.co/$HF_REPO hf-data
+          git clone https://huggingface.co/${HF_REPO} hf-data
+          cd hf-data
+          git remote set-url origin https://${HF_TOKEN}@huggingface.co/${HF_REPO}.git
+          cd ..
 
       # 6) Copy anonymous README
       - name: Copy anonymous README
@@ -58,5 +61,4 @@ jobs:
           git add README.md data/*.jsonl
           git commit -m "Auto-update dataset" || echo "Nothing to commit"
           # push using the Bearer token header
-          git -c http.extraheader="Authorization: Bearer $HF_TOKEN" \
-              push https://huggingface.co/$HF_REPO.git HEAD:main
+          git push origin main
