@@ -1,3 +1,7 @@
+language: 
+- en
+license: mit
+
 # Benchmark Dataset
 
 This repository contains a collection of mathematical benchmark problems designed for evaluating Large Language Models (LLMs) on mathematical reasoning tasks.
