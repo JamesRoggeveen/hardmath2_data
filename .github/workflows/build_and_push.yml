@@ -8,11 +8,12 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      HF_REPO:  ${{ secrets.HF_REPO }}
 
     steps:
-    # 1) Checkout your GitHub repo (YAML + scripts + README_ANON.me)
-    - name: Checkout source
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
     # 2) Set up Python
     - name: Setup Python
@@ -31,39 +32,25 @@ jobs:
       run: python scripts/build_jsonl.py data_src data
 
     # 5) Clone the anonymized HF dataset repo
-    - name: Clone HF dataset
-      env:
-        HF_REPO: ${{ secrets.HF_REPO }}
-      run: |
-        git clone https://huggingface.co/${HF_REPO} hf-data
+      - name: Clone HF dataset
+        run: |
+          git clone https://$HF_TOKEN@huggingface.co/$HF_REPO hf-data
 
-    # 6) Copy your anonymous README into the HF repo
-    - name: Copy anonymous README
-      run: |
-        cp README_ANON.md hf-data/README.md
+      - name: Copy anonymous README
+        run: |
+          cp README_ANON.md hf-data/README.md
 
-    # 7) Clean out old JSONL and copy in the new ones
-    - name: Sync JSONL
-      run: |
-        mkdir -p hf-data/data
-        rm -f hf-data/data/*.jsonl
-        cp data/*.jsonl hf-data/data/
+      - name: Sync JSONL
+        run: |
+          mkdir -p hf-data/data
+          rm -f hf-data/data/*.jsonl
+          cp data/*.jsonl hf-data/data/
 
-    # 8) Commit & push with a neutral CI identity
-    - name: Commit & Push to HF
-      env:
-        HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        HF_REPO:  ${{ secrets.HF_REPO }}
-      run: |
-        cd hf-data
-        # Authenticate
-        huggingface-cli login --token "$HF_TOKEN"
-        # Set generic author so no personal info leaks
-        git config user.name  "CI Bot"
-        git config user.email "ci-bot@anonymous.invalid"
-        # Stage the updated README and JSONL
-        git add README.md data/*.jsonl
-        # Commit (if there are changes)
-        git commit -m "Auto-update README and JSONL from GitHub Actions" || echo "Nothing to commit"
-        # Push back to the Hugging Face repo
-        git push https://huggingface.co/${HF_REPO}.git HEAD:main
+      - name: Commit & Push to HF
+        run: |
+          cd hf-data
+          git config user.name  "CI Bot"
+          git config user.email "ci-bot@anonymous.invalid"
+          git add README.md data/*.jsonl
+          git commit -m "Auto-update dataset" || echo "Nothing to commit"
+          git push https://$HF_TOKEN@huggingface.co/$HF_REPO.git HEAD:main
