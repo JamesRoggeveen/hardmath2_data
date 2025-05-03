@@ -51,7 +51,7 @@ jobs:
       # 8) Copy anonymous README
       - name: Copy anonymous README
         run: |
-          cp README_ANON.md ${{ env.HF_DATASET_DIR }}/README.md
+          cp README_ANON_HF.md ${{ env.HF_DATASET_DIR }}/README.md
 
       # 9) Clean & sync JSONL
       - name: Sync JSONL
