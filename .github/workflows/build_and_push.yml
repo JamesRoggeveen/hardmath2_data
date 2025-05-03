@@ -16,36 +16,58 @@ jobs:
       - uses: actions/checkout@v4
 
     # 2) Set up Python
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+    name: Build & Deploy Dataset to Hugging Face
 
-    # 3) Install dependencies
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyyaml huggingface_hub
+on:
+  push:
+    branches:
+      - main
 
-    # 4) Build JSONL from YAML
-    - name: Build JSONL
-      run: python scripts/build_jsonl.py data_src data
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      HF_REPO:  ${{ secrets.HF_REPO }}
 
-    # 5) Clone the anonymized HF dataset repo
+    steps:
+      # 1) Checkout your GitHub repo
+      - uses: actions/checkout@v4
+
+      # 2) Set up Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3) Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml huggingface_hub
+
+      # 4) Build JSONL from YAML
+      - name: Build JSONL
+        run: python scripts/build_jsonl.py data_src data
+
+      # 5) Clone the anonymized HF dataset repo
       - name: Clone HF dataset
         run: |
           git clone https://$HF_TOKEN@huggingface.co/$HF_REPO hf-data
 
+      # 6) Copy anonymous README
       - name: Copy anonymous README
         run: |
           cp README_ANON.md hf-data/README.md
 
+      # 7) Clean & sync JSONL
       - name: Sync JSONL
         run: |
           mkdir -p hf-data/data
           rm -f hf-data/data/*.jsonl
           cp data/*.jsonl hf-data/data/
 
+      # 8) Commit & push as “CI Bot”
       - name: Commit & Push to HF
         run: |
           cd hf-data
