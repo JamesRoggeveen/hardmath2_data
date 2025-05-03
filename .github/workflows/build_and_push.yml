@@ -40,7 +40,7 @@ jobs:
     # 6) Copy your anonymous README into the HF repo
     - name: Copy anonymous README
       run: |
-        cp README_ANON.me hf-data/README.me
+        cp README_ANON.md hf-data/README.md
 
     # 7) Clean out old JSONL and copy in the new ones
     - name: Sync JSONL
