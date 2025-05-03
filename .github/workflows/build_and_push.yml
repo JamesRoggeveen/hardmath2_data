@@ -3,24 +3,6 @@ name: Build & Deploy Dataset to Hugging Face
 on:
   push:
     branches:
-      - main    # or your default branch
-
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-    env:
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      HF_REPO:  ${{ secrets.HF_REPO }}
-
-    steps:
-      - uses: actions/checkout@v4
-
-    # 2) Set up Python
-    name: Build & Deploy Dataset to Hugging Face
-
-on:
-  push:
-    branches:
       - main
 
 jobs:
