@@ -10,105 +10,34 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      HF_REPO: ${{ secrets.HF_REPO }} # e.g., 'username/my-dataset'
-      HF_DATASET_DIR: hf-dataset-repo # Local checkout dir name
+      HF_REPO:  ${{ secrets.HF_REPO }}
 
     steps:
-      # 1) Checkout your GitHub repo (contains build script and source data)
       - uses: actions/checkout@v4
-
-      # 2) Set up Python
       - name: Setup Python
         uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      # 3) Install dependencies
+        with: { python-version: '3.10' }
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install pyyaml huggingface_hub
-
-      # 4) Build JSONL from YAML
       - name: Build JSONL
         run: python scripts/build_jsonl.py data_src data
-
-      # 4.1) DEBUG: Check if build created files
-      - name: DEBUG - List built files
-        run: |
-          echo "--- Listing contents of local ./data directory ---"
-          ls -l data
-          echo "--- End listing ---"
-          # Optionally, fail if no jsonl files were created
-          # if ! ls data/*.jsonl > /dev/null 2>&1; then
-          #   echo "Error: No .jsonl files found in ./data after build."
-          #   exit 1
-          # fi
-
-      # 5) Login to Hugging Face CLI
-      - name: Login to Hugging Face CLI
-        run: huggingface-cli login --token $HF_TOKEN --add-to-git-credential
-
-      # 6) Clone the HF dataset repo
-      - name: Clone HF dataset repo
-        run: |
-          git clone https://huggingface.co/datasets/${HF_REPO} ${{ env.HF_DATASET_DIR }}
-
-      # 6.1) DEBUG: Check cloned repo and look for .gitignore
-      - name: DEBUG - Check cloned repo structure and .gitignore
-        run: |
-          echo "--- Listing contents of cloned repo (${{ env.HF_DATASET_DIR }}) ---"
-          ls -la ${{ env.HF_DATASET_DIR }}
-          echo "--- Checking for .gitignore ---"
-          cat ${{ env.HF_DATASET_DIR }}/.gitignore || echo "No .gitignore found in cloned repo."
-          echo "--- End check ---"
-
-      # 7) Copy anonymous README
+      - name: Clone HF dataset
+        run: git clone https://huggingface.co/${HF_REPO} hf-data
       - name: Copy anonymous README
-        run: |
-          cp README_ANON.md ${{ env.HF_DATASET_DIR }}/README.md
-
-      # 8) Clean & sync JSONL
+        run: cp README_ANON.md hf-data/README.md
       - name: Sync JSONL
         run: |
-          echo "--- Preparing target data directory ---"
-          mkdir -p ${{ env.HF_DATASET_DIR }}/data
-          echo "--- Removing existing *.jsonl files from ${{ env.HF_DATASET_DIR }}/data ---"
-          find ${{ env.HF_DATASET_DIR }}/data -name '*.jsonl' -print -delete
-          echo "--- Copying new *.jsonl files from ./data to ${{ env.HF_DATASET_DIR }}/data ---"
-          cp data/*.jsonl ${{ env.HF_DATASET_DIR }}/data/
-
-      # 8.1) DEBUG: Check files after copy
-      - name: DEBUG - List files in target data directory after copy
-        run: |
-          echo "--- Listing contents of ${{ env.HF_DATASET_DIR }}/data after copy ---"
-          ls -l ${{ env.HF_DATASET_DIR }}/data
-          echo "--- End listing ---"
-
-      # 9) Commit & push as “CI Bot”
+          mkdir -p hf-data/data
+          rm -f hf-data/data/*.jsonl
+          cp data/*.jsonl hf-data/data/
       - name: Commit & Push to HF
         run: |
-          cd ${{ env.HF_DATASET_DIR }}
-          echo "--- Current directory: $(pwd) ---" # DEBUG: Confirm directory
-          git config user.name "CI Bot"
-          git config user.email "ci-bot@users.noreply.github.com"
-
-          echo "--- Running git status before add ---" # DEBUG: Check Git status
-          git status
-
-          # Add README and all files in data directory
-          git add README.md data/
-
-          echo "--- Running git status after add ---" # DEBUG: Check Git status after add
-          git status
-
-          # Commit if there are staged changes
-          # Use git diff --staged --quiet to check if anything is staged
-          if ! git diff --staged --quiet; then
-            echo "Changes detected, committing..."
-            git commit -m "Auto-update dataset [skip ci]"
-            echo "Pushing changes..."
-            git push origin main
-          else
-            echo "No staged changes detected by 'git diff --staged --quiet'. Nothing to commit."
-          fi
+          cd hf-data
+          git config user.name  "CI Bot"
+          git config user.email "ci-bot@anonymous.invalid"
+          git add README.md data/*.jsonl
+          git commit -m "Auto-update dataset" || echo "Nothing to commit"
+          git -c http.extraheader="Authorization: Bearer $HF_TOKEN" \
+              push https://huggingface.co/${HF_REPO}.git HEAD:main
