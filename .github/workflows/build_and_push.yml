@@ -1,21 +1,20 @@
-# .github/workflows/build-and-push.yml
-
 name: Build & Deploy Dataset to Hugging Face
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main    # or your default branch
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-    # 1) Checkout your GitHub repo (YAML + scripts)
+    # 1) Checkout your GitHub repo (YAML + scripts + README_ANON.me)
     - name: Checkout source
       uses: actions/checkout@v4
 
-    # 2) Setup Python
+    # 2) Set up Python
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
@@ -27,28 +26,28 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyyaml huggingface_hub
 
-    # 4) Build JSONL from your YAML source
+    # 4) Build JSONL from YAML
     - name: Build JSONL
       run: python scripts/build_jsonl.py data_src data
 
-    # 5) Clone the anonymous HF dataset repo
+    # 5) Clone the anonymized HF dataset repo
     - name: Clone HF dataset
       env:
-        HF_REPO: ${{ secrets.HF_REPO }}      # e.g. "anon_bot/my_dataset"
+        HF_REPO: ${{ secrets.HF_REPO }}
       run: |
         git clone https://huggingface.co/${HF_REPO} hf-data
 
-    # 6) Clean out old JSONL files in hf-data/data/
-    - name: Clean HF data folder
+    # 6) Copy your anonymous README into the HF repo
+    - name: Copy anonymous README
+      run: |
+        cp README_ANON.me hf-data/README.me
+
+    # 7) Clean out old JSONL and copy in the new ones
+    - name: Sync JSONL
       run: |
         mkdir -p hf-data/data
         rm -f hf-data/data/*.jsonl
-
-    # 7) Copy newly built JSONL into the HF repo’s data/ folder
-    - name: Sync JSONL
-      run: |
         cp data/*.jsonl hf-data/data/
-        ls hf-data/data
 
     # 8) Commit & push with a neutral CI identity
     - name: Commit & Push to HF
@@ -57,9 +56,14 @@ jobs:
         HF_REPO:  ${{ secrets.HF_REPO }}
       run: |
         cd hf-data
+        # Authenticate
         huggingface-cli login --token "$HF_TOKEN"
+        # Set generic author so no personal info leaks
         git config user.name  "CI Bot"
         git config user.email "ci-bot@anonymous.invalid"
-        git add data/*.jsonl
-        git commit -m "Auto-update JSONL from GitHub Actions" || echo "Nothing to commit"
+        # Stage the updated README and JSONL
+        git add README.me data/*.jsonl
+        # Commit (if there are changes)
+        git commit -m "Auto-update README and JSONL from GitHub Actions" || echo "Nothing to commit"
+        # Push back to the Hugging Face repo
         git push https://huggingface.co/${HF_REPO}.git HEAD:main
