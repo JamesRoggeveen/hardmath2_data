@@ -62,7 +62,7 @@ jobs:
         git config user.name  "CI Bot"
         git config user.email "ci-bot@anonymous.invalid"
         # Stage the updated README and JSONL
-        git add README.me data/*.jsonl
+        git add README.md data/*.jsonl
         # Commit (if there are changes)
         git commit -m "Auto-update README and JSONL from GitHub Actions" || echo "Nothing to commit"
         # Push back to the Hugging Face repo
