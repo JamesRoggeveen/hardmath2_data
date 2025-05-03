@@ -1,0 +1,65 @@
+# .github/workflows/build-and-push.yml
+
+name: Build & Deploy Dataset to Hugging Face
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1) Checkout your GitHub repo (YAML + scripts)
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    # 2) Setup Python
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # 3) Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml huggingface_hub
+
+    # 4) Build JSONL from your YAML source
+    - name: Build JSONL
+      run: python scripts/build_jsonl.py data_src data
+
+    # 5) Clone the anonymous HF dataset repo
+    - name: Clone HF dataset
+      env:
+        HF_REPO: ${{ secrets.HF_REPO }}      # e.g. "anon_bot/my_dataset"
+      run: |
+        git clone https://huggingface.co/${HF_REPO} hf-data
+
+    # 6) Clean out old JSONL files in hf-data/data/
+    - name: Clean HF data folder
+      run: |
+        mkdir -p hf-data/data
+        rm -f hf-data/data/*.jsonl
+
+    # 7) Copy newly built JSONL into the HF repo’s data/ folder
+    - name: Sync JSONL
+      run: |
+        cp data/*.jsonl hf-data/data/
+        ls hf-data/data
+
+    # 8) Commit & push with a neutral CI identity
+    - name: Commit & Push to HF
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        HF_REPO:  ${{ secrets.HF_REPO }}
+      run: |
+        cd hf-data
+        huggingface-cli login --token "$HF_TOKEN"
+        git config user.name  "CI Bot"
+        git config user.email "ci-bot@anonymous.invalid"
+        git add data/*.jsonl
+        git commit -m "Auto-update JSONL from GitHub Actions" || echo "Nothing to commit"
+        git push https://huggingface.co/${HF_REPO}.git HEAD:main
