@@ -13,46 +13,25 @@ jobs:
       HF_REPO:  ${{ secrets.HF_REPO }}
 
     steps:
-      # 1) Checkout your GitHub repo
       - uses: actions/checkout@v4
-
-      # 2) Set up Python
       - name: Setup Python
         uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      # 3) Install dependencies
+        with: { python-version: '3.10' }
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install pyyaml huggingface_hub
-
-      # 4) Build JSONL from YAML
       - name: Build JSONL
         run: python scripts/build_jsonl.py data_src data
-
-      # 5) Clone the anonymized HF dataset repo
-      - name: Clone HF dataset & set auth
-        run: |
-          git clone https://huggingface.co/${HF_REPO} hf-data
-          cd hf-data
-          git remote set-url origin https://${HF_TOKEN}@huggingface.co/${HF_REPO}.git
-          cd ..
-
-      # 6) Copy anonymous README
+      - name: Clone HF dataset
+        run: git clone https://huggingface.co/${HF_REPO} hf-data
       - name: Copy anonymous README
-        run: |
-          cp README_ANON.md hf-data/README.md
-
-      # 7) Clean & sync JSONL
+        run: cp README_ANON.md hf-data/README.md
       - name: Sync JSONL
         run: |
           mkdir -p hf-data/data
           rm -f hf-data/data/*.jsonl
           cp data/*.jsonl hf-data/data/
-
-      # 8) Commit & push as “CI Bot”
       - name: Commit & Push to HF
         run: |
           cd hf-data
@@ -60,5 +39,5 @@ jobs:
           git config user.email "ci-bot@anonymous.invalid"
           git add README.md data/*.jsonl
           git commit -m "Auto-update dataset" || echo "Nothing to commit"
-          # push using the Bearer token header
-          git push origin main
+          git -c http.extraheader="Authorization: Bearer $HF_TOKEN" \
+              push https://huggingface.co/${HF_REPO}.git HEAD:main
