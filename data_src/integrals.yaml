@@ -6,7 +6,7 @@ type: "integrals"
 
 problems:
   - prompt: |
-      Consider the following integral:$I(x)=\int_0^\infty \frac{t^{x-1}e^{-t}}{t+x}dt$. In the limit$x \to \infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\boxed{}$ latex environment.
+      Consider the following integral:$I(x)=\int_0^\infty \frac{t^{x-1}e^{-t}}{t+x}dt$. In the limit$x \to \infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\boxed{}$ latex environment. Express your answer in terms of the Gamma function $\Gamma(x)$.
     solution: |
       $\boxed{I(x)\sim \frac{\Gamma(x)}{2x}}$
     parameters: "$x$"
