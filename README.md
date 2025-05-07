@@ -6,6 +6,11 @@ license: mit
 
 This repository contains a collection of mathematical benchmark problems designed for evaluating Large Language Models (LLMs) on mathematical reasoning tasks.
 
+## Building
+Save `.csv` file exported from Google Sheet to `raw_csv` folder and run `csv_to_yaml.py` to convert all of the `.csv` file sto `.yaml`. Then push the changes to remote and the `.yaml` file will automatically be converted to `.jsonl` and pushed to an anonymized HF repository.
+
+The `.csv` file should have a descriptive name for the types of problems in the file, with underscores instead of spaces.
+
 ## Data Format
 
 Each benchmark problem in the dataset is structured as a JSON object containing the following fields:
