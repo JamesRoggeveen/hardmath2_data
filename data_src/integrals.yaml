@@ -1,18 +1,88 @@
 meta:
-  name: "Integrals"
-  date: "2025-05-03"
-
-type: "integrals"
-
+  name: Integrals
+  date: '2025-05-08'
+type: integrals
 problems:
-  - prompt: |
-      Consider the following integral:$I(x)=\int_0^\infty \frac{t^{x-1}e^{-t}}{t+x}dt$. In the limit$x \to \infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\boxed{}$ latex environment. Express your answer in terms of the Gamma function $\Gamma(x)$.
-    solution: |
-      $\boxed{I(x)\sim \frac{\Gamma(x)}{2x}}$
-    parameters: "$x$"
-
-  - prompt: |
-      Consider the following integral:$ \left|\frac{\int_0^\infty \frac{t^{x-1}}{t+x}e^{-t^{1/4}}dt}{\int_0^\infty t^{x-1}e^{-t^{1/4}}dt}\right|$In the limit$x \rightarrow \infty$, find approximate behavior of the integral up to and including the leading order in $x$. Provide your answer in a $\boxed{}$ latex environment.
-    solution: |
-      $\boxed{I(x)=\left(\frac{x}{0.25}\right)^{-1/0.25}}$
-    parameters: "$x$"
+- prompt: Consider the following integral:$\int_0^{5} ( \frac{e^{-x}}{1 + x^2}) e^{-\epsilon
+    (\frac{\sin^2(x)}{1 + x^4})} dx$In the limit$\epsilon \rightarrow \infty$, find
+    approximate behavior of the integral up to and including the leading order in
+    x. Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{\sqrt{\frac{2 \pi}{2 \epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Consider the following integral:$I(x) = \int_0^1[\frac{e^{-xt}}{1+t^2}]dt$In
+    the limit$x \rightarrow 0$, find approximate behavior of the integral up to and
+    including the leading order in x. Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x) = \frac{\pi}{4}-\frac{x}{2}\ln(2)}$
+  parameters: $t;x$
+- prompt: Consider the following integral:$I(x) = \int_1^\infty g(t) e^{-xf(t)}dt;
+    g(x)=\frac{85}{-t+t^6}; f(t) = (\ln(t-1))^2 + \cos(\frac{\pi}{2} t) + 1$In the
+    limit$x \rightarrow \infty$, find approximate behavior of the integral up to and
+    including the leading order in x. Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x) \approx \frac{85}{62}\sqrt{\frac{2\pi}{(2+\frac{\pi^2}{4})x}}}$
+  parameters: $t;x$
+- prompt: Consider the following integral:$I(x)=\int_x^{1}cos(xt)dt$In the limit$x
+    \to 0+$, find approximate behavior of the integral up to and including the order
+    x^6. Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x) = 1 - x - \frac{x^2}{6} + \frac{x^4}{120} + \frac{x^5}{6}  -
+    \frac{x^6}{5040} }$
+  parameters: $x$
+- prompt: Consider the following integral:$I(x) = \int_{x}^{\infty} e^{-at^b} dt$In
+    the limit$x \to +\infty$, find approximate behavior of the integral up to and
+    including the leading order in x. Provide an expression for the approximate behavior
+    of the integral in a $\boxed{}$ latex environment.
+  solution: $\boxed{\int_{x}^{\infty} e^{-a t^b} \, dt \sim \frac{e^{-a x^b}}{a b
+    x^{b-1}}}$
+  parameters: $x;a;b$
+- prompt: Consider the following integral:$ I(x) =  \int_{x}^{\infty} K_0(t) \, dt
+    $In the limit$x \to +\infty$, find approximate behavior of the integral up to
+    and including the leading order in x. Provide your answer in a $\boxed{}$ latex
+    environment.
+  solution: $\boxed{I(x) \sim \sqrt{\frac{\pi}{2x}} e^{-x}}$
+  parameters: $t;x$
+- prompt: Consider the following integral:$\int_{0}^{1/e} \frac{e^{-xt}}{\ln t} \,
+    dt$In the limit$x \to +\infty$, find approximate behavior of the integral up to
+    and including the leading order in x. Provide your answer in a $\boxed{}$ latex
+    environment.
+  solution: $\boxed{-\frac{1}{x \ln x}}$
+  parameters: $t;x$
+- prompt: Consider the following integral:$I(\epsilon) = \int_0^{10} \frac{1}{(\epsilon
+    + 4x^3 + 2x^9)^{3/2}} dx$In the limit$\epsilon \rightarrow \infty$, find approximate
+    behavior of the integral up to and including the leading order in x. Provide your
+    answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(\epsilon) = \frac{1}{\epsilon^{3/2}} \cdot 10}$
+  parameters: $\epsilon$
+- prompt: Consider the following integral:$I(x) = -\int_{0}^{\infty} \left[ \frac{1}{e^t
+    - 1} - \frac{1}{t} + \frac{1}{2} \right] e^{-xt} \, dt$In the limit$x \to +\infty$,
+    find the asymptotic expansion of the integral up to and including the first three
+    leading orders in z. Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x) \sim -\frac{1}{12x^2} + \frac{1}{120x^4} - \frac{1}{252x^6}}$
+  parameters: $x; t$
+- prompt: Consider the following integral:$I(\epsilon) = \int_0^{10} \frac{dx}{(\epsilon
+    + 9x^5 + x^{11})^\frac{13}{7}}$In the limit$\epsilon \to \infty$, find approximate
+    behavior of the integral up to and including the first leading order in \epsilon.
+    Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(\epsilon) = 10\cdot\epsilon^{-13/7}}$
+  parameters: $\epsilon$
+- prompt: Consider the following integral:$I(\epsilon) = \int_0^{10} \frac{dx}{(\epsilon
+    + 9x^5 + x^{11})^\frac{13}{7}}$In the limit$\epsilon \to 10^6$, find approximate
+    behavior of the integral up to and including the first leading order in \epsilon.
+    Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(\epsilon) = \frac{\sqrt[11]{-1 + 2^{\frac{7}{13}}}}{\epsilon^{\frac{136}{77}}}}$
+  parameters: $\epsilon$
+- prompt: Consider the following integral:$I(x) = \int_0^3 (\cos(t^2) + 5 + 2t^3)
+    e^{-x(2e^t + 7 + \sin(t))} dt$In the limit$x\to\infty$, find approximate behavior
+    of the integral up to and including the first leading order in x. Provide your
+    answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{y(x)= \frac{2e^{-9x}}{x}}$
+  parameters: $x$
+- prompt: Consider the following integral:$I(x)=\int_0^\infty \frac{t^{x-1}e^{-t}}{t+x}dt$In
+    the limit$x\to\infty$, find approximate behavior of the integral up to and including
+    the leading order in x. Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x)\sim  \frac{\Gamma(x)}{2x}}$
+  parameters: $x$
+- prompt: "Consider the following integral:$I(x) = \\int_0^{\u03C0/4}\\sqrt{sin (t)}e^{-x^2t^2}dt$\
+    \ In the limit$x \\rightarrow \\infty$, find approximate behavior of the integral\
+    \ up to and including the leading order in x. Provide your answer in a $\\boxed{}$\
+    \ latex environment."
+  solution: $\boxed{I(x) = \frac{1}{2}x^{-3/2}\cdot\Gamma(\frac{3}{4})}$
+  parameters: $x$

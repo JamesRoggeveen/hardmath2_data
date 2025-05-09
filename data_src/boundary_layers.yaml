@@ -1,26 +1,626 @@
 meta:
-  name: "Boundary Layer Problems"
-  date: "2025-05-03"
-
-type: "boundary_layer"
-
+  name: Boundary Layers
+  date: '2025-05-08'
+type: boundary_layers
 problems:
-  - prompt: |
-      Find a uniformly valid approximation to the solution of
-      $\epsilon y'' - x y' + x^3 y = 0$ with boundary conditions
-      $y(0) = 1$, $y(1) = 2$ in the limit $\epsilon \ll 1$. Use only
-      the variables and constants given; do not define extra constants.
-      Place your final solution in a $\boxed{}$ LaTeX environment.
-    solution: |
-      \boxed{y = e^{\frac{x^3}{3}} + (2-e^{1/3})e^{-\frac{1-x}{\epsilon}}}
-    parameters: 'x; \epsilon'
-
-  - prompt: |
-      Find a uniformly valid approximation to the solution of
-      $\epsilon y'' - x y' + x^3 y = 0$ with boundary conditions
-      $y(0) = A$, $y(1) = B$ in the limit $\epsilon \ll 1$. Use only
-      the variables and constants given; do not define extra constants.
-      Place your final solution in a $\boxed{}$ LaTeX environment.
-    solution: |
-      \boxed{y = A*e^{\frac{x^3}{3}} + (B - A*e^{1/3})*e^{-\frac{1-x}{\epsilon}}}
-    parameters: 'x; \epsilon; A; B'
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    x y' + x^3 y = 0$ with boundary conditions $y(0) = 1$, $y(1) = 2$ in the limit
+    $\epsilon \ll 1$. Use only the variables and constants given in the problem; do
+    not define additional constants. Place your final solution in a $\boxed{}$ LaTeX
+    environment.
+  solution: $\boxed{y = e^{\frac{x^3}{3}} + (2-e^{1/3})e^{-(1-x)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    x y' + x^3 y = 0$ with boundary conditions $y(0) = A$, $y(1) = B$ in the limit
+    $\epsilon \ll 1$. Use only the variables and constants given in the problem; do
+    not define additional constants. Place your final solution in a $\boxed{}$ LaTeX
+    environment.
+  solution: $\boxed{y = A*e^{\frac{x^3}{3}} + (B-A*e^{1/3})e^{-(1-x)/\epsilon}}$
+  parameters: $x; \epsilon; A; B$
+- prompt: Find a single uniformly valid approximation to the solution of $\epsilon
+    y'' + x y' - y = -e^x$ with boundary conditions $y(-1)=0, y(1)=1$ in the limit
+    $\epsilon \ll 1$. Use only the variables and constants given in the problem; do
+    not define additional constants. Place your final solution in a $\boxed{}$ LaTeX
+    environment.
+  solution: $\boxed{y_{unif}(x) \approx \left[ e^x - x Ei(x) + (1 - e + Ei(1)) x \right]
+    - \left[e^{-1} + Ei(-1) - 1 + e - Ei(1)\right] e^{-(x+1)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''-2
+    tan(x) y'+y=0$ with boundary conditions $y(-1)=0, y(1)=1$ in the limit $\epsilon
+    = 0$. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y = \sqrt{\frac{\sin x}{\sin 1}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''-x
+    y'-(3+x)$ with boundary conditions $y(-1)=1, y(1)=1$ in the limit $\epsilon =
+    0$ from the positive direction. Use only the variables and constants given in
+    the problem; do not define additional constants. Place your final solution in
+    a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y = E^{-(x+1)/\epsilon}+ E^{-(1-x)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation, with error of order $\epsilon^2$,
+    to the solution of $\epsilon y'' + y' +y = 0$ with boundary conditions $y(0) =
+    e, y(1) = 1$ in the limit $\epsilon = 0$ from the positive direction. Notice that
+    there is no boundary layer in leading order, but one does appear in next order.
+    Use only the variables and constants given in the problem; do not define additional
+    constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y = e^{1-x} + \epsilon[(-x+1)e^{1-x} -e^{1-\frac{x}{\epsilon}}]}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    (x+2)y' - (3+x) = 0$ with boundary conditions $y(-1) = 1, y(1) = 1$ in the limit
+    $\epsilon = 0$ from the positive direction. Use only the variables and constants
+    given in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y_{uniform}(x) = - \ln(2+x) -x + (\ln(3) + 2)e^{\frac{-3(1-x)}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $ \epsilon y'' +
+    y' \sin(x) + y \sin(\2x) = 0$ with boundary conditions $ y(0) = \pi,  y(\pi) =
+    0 $ in the limit $\epsilon = 0$ from the positive direction. Use only the variables
+    and constants given in the problem; do not define additional constants. Place
+    your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $ \boxed{y = \text{erfc}(\frac{x}{\sqrt{2\epsilon}})} $
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (1 + x^2) y' - y = 0$ with boundary conditions $y(0) = 1, y(1) = 2$ in the limit
+    $\epsilon = 0$ from the positive direction. Use only the variables and constants
+    given in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y = 2 e^{\arctan(x) - \pi/4} + (1 - 2 e^{-pi/4}) e^{-x/\epsilon}
+    }$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (x^2 +1)y'+2xy=0$  with boundary conditions $y(0)=1, y(1)=5$  in the limit $\epsilon
+    = 0$ from the positive direction. Use only the variables and constants given in
+    the problem; do not define additional constants. Place your final solution in
+    a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = \frac{10}{x^2+1} + e^{\frac{-x}{\epsilon}} - 10e^{\frac{-x}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    x y' + y = 0$ with boundary conditions $y(0)=1, y(1)=1$ in the limit $\epsilon
+    = 0$ from the positive direction. Denote the square root of -1 as I. Use only
+    the variables and constants given in the problem; do not define additional constants.
+    Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) \approx \frac{1}{\sqrt{\epsilon}}e^{\frac{-x^2}{2\epsilon}}
+    \\i \sqrt{\frac{\pi}{2}}erfi(\frac{x}{\sqrt{2\epsilon}})+ e^{\frac{-x^2}{2\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    y'/x - y^2 = 0$ with boundary conditions $y(0) = 1, y(1) = 1$  in the limit $\epsilon
+    = 0$ from the positive direction. Use only the variables and constants given in
+    the problem; do not define additional constants. Place your final solution in
+    a $\boxed{}$ LaTeX environment. Your response should have the form of a single
+    analytical expression.
+  solution: $\boxed{y(x) = \frac{1}{\frac{1}{2}x^2 + 1} + \frac{1}{3} \exp(\frac{x-1}{\epsilon})}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $$\epsilon y''+\frac{y'}{x^2}+y=0
+    with boundary conditions $y(0)=0, y(1)=e^{-\frac{1}{3}}$ in the limit $\epsilon
+    \rightarrow 0+$. Use only the variables and constants given in the problem; do
+    not define additional constants. Place your final solution in a $\boxed{}$ LaTeX
+    environment.
+  solution: $\boxed{y(x)=e^{\frac{-x^3}{3}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''+\frac{y'}{x}+y=0$
+    with boundary conditions $[y(-1)=2e^{-1/2}, y(1)=e^{-1/2}]$ in the limit $\epsilon
+    \rightarrow 0+$. Use only the variables and constants given in the problem; do
+    not define additional constants. Place your final solution in a $\boxed{}$ LaTeX
+    environment.
+  solution: $\boxed{y(x)=\left(\frac{3-x}{2}\right)e^{-\frac{x^2}{2}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    (x+1) y' + x^2 + x + 1 = 0$ with boundary conditions $y(0) = 1, y(1) = 2$ in the
+    limit $\epsilon \ll 0+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y = \frac{1}{2} x^2 + \ln{(x+1)} + 1 + (\frac{1}{2} - \ln{2})
+    e^{-2(1-x) / \epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (\cosh(x))(x^2 + 1)y' - x^3 y = 0$ with boundary conditions $y(0) = 1, y(1) =
+    1$ in the limit $\epsilon \ll 0+$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = (1-\exp\left(\int_1^0 \frac{t^3}{\cosh(t)(t^2 + 1)}\ dt\right))e^{-x/\epsilon}
+    + \exp\left(\int_1^x \frac{t^3}{\cosh(t)(t^2 + 1)}\ dt\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    (x^2+4)y' - y^3 = 0$ with boundary conditions $y(0)=1, y(1)=\sqrt{5}$ in the limit
+    $\epsilon \ll 0+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Solve any integrals in the final solution.
+    Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x)=\frac{1}{\sqrt{\arctan\left(\frac{x}{2}\right)+1}}+\left(\sqrt{5}-\frac{1}{\sqrt{\arctan\left(\frac{1}{2}\right)+1}}\right)e^{-5(1-x)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    (x^2+1)y' - y^3 = 0$ with boundary conditions $y(0)=1, y(1)=1/2$ in the limit
+    $\epsilon \ll 0+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $ \boxed{y(x) \sim \frac{1}{\sqrt{2\arctan(x) + 1}} + \left( \frac{1}{2}
+    - \frac{1}{\sqrt{\pi/2 + 1}} \right) e^{-2(1-x)/\epsilon} }$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (x^2-12)y' - y^3 = 0$ with boundary conditions $y(0)=1, y'(1)=1/2$ in the limit
+    $\epsilon \ll 0+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) \approx \left( 1 - \frac{1}{2\sqrt{3}} \ln\left( \frac{2\sqrt{3}-x}{x+2\sqrt{3}}
+    \right) \right)^{-1/2} + \frac{\epsilon}{11} \left[ \frac{1}{2} + \frac{1}{11}
+    \left( 1 - \frac{1}{2\sqrt{3}} \ln\left( \frac{2\sqrt{3}-1}{2\sqrt{3}+1} \right)
+    \right)^{-3/2} \right] e^{-11(1-x)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (\ln x) y' - x(\ln x) y = 0$ with boundary conditions $y(1/2)=1, y(3/2)=1$ in
+    the limit $\epsilon \ll 0+$ for $x<1$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $ \boxed{ y(x) = e^{\frac{x^2}{2} - \frac{1}{8}} } $
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (\ln x) y' - x(\ln x) y = 0$ with boundary conditions $y(1/2)=1, y(3/2)=1$ in
+    the limit $\epsilon \ll 0+$ for $x>1$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $ \boxed{ y(x) = e^{\frac{x^2}{2} - \frac{9}{8}} } $
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    \frac{1}{x} y' - y = 0$ with boundary conditions $y(0) = 1, y(1) = 1$ in the limit
+    $\epsilon \ll 0+$ to leading order. Use only the variables and constants given
+    in the problem; do not define additional constants; in your final solution, only
+    $\epsilon$ and $x$ should remain as variables. Place your final solution in a
+    $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y =e^{-x^2/2} \left[ 1 \right]+ (1 - e^{-1/2}) \left[1 \right]
+    e^{-\frac{1 - x}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    x^2y' - xy = 0$ with boundary conditions $y(0) = 2, y(1) = 3$ in the limit $\epsilon
+    \ll 0+$. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) \approx 3x + 2 \exp\left(-\frac{x^3}{3\epsilon}\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    y'/(x^2-1.01) + ye^{-x} + sin(\epsilon)(x+cos(\epsilon)) y' = 0$ with boundary
+    conditions $y(-1) = 1, y(1) = 1$ in the limit $\epsilon \ll 0+$. Use only the
+    variables and constants given in the problem; do not define additional constants.
+    Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) \approx \exp(3.99 e^{-1} - (x^2 + 2x + 0.99) e^{-x}) + \left(1
+    - \exp(3.99 e^{-1} + 0.01 e)\right) \exp\left(-\frac{100(x+1)}{\epsilon}\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    \cos(x)y' + y = -1$ with boundary conditions $y(0) = 1$, $y(1) = 1$ in the limit
+    $\epsilon \rightarrow 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $$\boxed{y(x) = -1 + \frac{2(\sec(1) + \tan(1))}{\sec(x) + \tan(x)} +
+    2(1 - \sec(1) - \tan(1))e^{-x/\epsilon}}$$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $ \epsilon y''(x)
+    + (x-1)^2 y'(x) - x(x-1)^2 y(x) = \epsilon x^2 \sin(\pi x) [1+y(x)] $ with boundary
+    conditions $y(1/2)=3, y(3/2)=3$ in the limit $\epsilon \rightarrow 0^+$. Use only
+    the variables and constants given in the problem; do not define additional constants.
+    Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $$\boxed{y(x) \approx 3 e^{x^2/2 - 9/8} + 3(1 - e^{-1}) e^{-(x-1/2)/(4*\epsilon)}}$$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (\ln x)y' - x(\ln x)y = 0$ with boundary conditions $y(1/2) = 1, y(3/2) = 1$ in
+    the limit $\epsilon \to 0$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{\frac{1}{2} \left( e^{-\frac{1}{8} + \frac{x^2}{2}} + e^{-\frac{9}{8}
+    + \frac{x^2}{2}} \right) + \frac{1}{2} \left( e^{-\frac{9}{8} + \frac{x^2}{2}}
+    - e^{-\frac{1}{8} + \frac{x^2}{2}}\right) * erf\left(\frac{x-1}{\sqrt{2\epsilon}}\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    \frac{cos(x)}{3}y' - (\ln x)y = 0$ with boundary conditions $y(0) = 0, y(1) =
+    1$ in the limit $\epsilon \to 0^+$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) =  e^{\int_{1}^{x}\frac{3\ln t}{\cos(t)}dt} - e^{\int_{1}^{0}\frac{3\ln
+    t}{\cos(t)}dt}e^{- \frac{x}{3\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + (1 + x) y'(x) + 3 y(x) = 0$ with boundary conditions $y(0) = 1, y(1) = 1$ in
+    the limit $\epsilon \to 0$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x)=8(1+x)^{-3}-7e^{-\frac{x}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + (2 - x^2) y'(x) + 4 y(x) = 0$ with boundary conditions  $y(0) = 0, y(1) = 2$,
+    in the limit $\epsilon \to 0$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x)=2(3+2\sqrt{2})^\sqrt{2}((\frac{\sqrt{2}-x}{\sqrt{2}+x})^\sqrt{2}-e^{-\frac{2x}{\epsilon}})}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    x y' = x \cos x$ with boundary conditions $y(-1) = 2, y(1) = 2$ in the limit $\epsilon
+    \to 0^+$. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y = \sin x + 2 - \sin(1) \, \mathrm{erf}\left(\frac{x}{\sqrt{2\epsilon}}\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    x y' - (3 + x)y = 0$ with boundary conditions $y(-1) = 1, y(1) = 1$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y = e^{-(x+1)/\epsilon} + e^{(x-1)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    \frac{y'}{x^2} + y = 0$ with boundary conditions $y(0) = 0, y(1) = e^{-1/3}$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $$\boxed{y(x)=e^{-\frac{x^3}{3}}}$$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (\cosh x)y' + y = 0$ with boundary conditions $y(-1) = 0, y(1) = 1$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $$\boxed{y(x) = \exp (2(\arctan(e)-\arctan(e^{x})))-\exp(2(\arctan(e)-\arctan(e^{-1})))e^{-\cosh(1)\frac{x+1}{\epsilon}}}$$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + \cosh(x)\,y'(x) - y(x) = 0$ with boundary conditions $y(0)=1, y(1)=1$ in the
+    limit $\epsilon \ll 1$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = \exp (2[\arctan(e^x) - \arctan(e)]) + (1 - \exp (2[\arctan(1)
+    - \arctan(e)]))e^{-\frac{x}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon\,y'' +
+    (x^2+1)\,y' - x^3\,y = 0$ with boundary conditions $y(0)=1, y(1)=1$ in the limit
+    $\epsilon \ll 1$. Use only the variables and constants given in the problem; do
+    not define additional constants. Place your final solution in a $\boxed{}$ LaTeX
+    environment.
+  solution: $$\boxed{y(x, \epsilon) = \sqrt{2}e^{-1/2} \frac{e^{x^2/2}}{\sqrt{x^2+1}}
+    + \left( 1 - \sqrt{2}e^{-1/2} \right) e^{-x/\epsilon}}$$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon^2 y''
+    + \epsilon y' - y = 0$ with boundary conditions $y(0) = 0$ and $y(1) = 1$ in the
+    limit $\epsilon = 0$ from the positive direction. Use only the variables and constants
+    given in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = \frac{\sqrt{2\epsilon}}{1-x + \sqrt{2\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    \epsilon (x+1) y' + y^2 = 0$ with boundary conditions $y(0) = 1, y(1) = -1$ in
+    the limit $\epsilon \ll 0+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = -\left(1 + \frac{1-x}{\sqrt{6\epsilon}}\right)^{-2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $ \varepsilon y''
+    + \left(1 + \frac{2\varepsilon}{x} - \frac{2\varepsilon^3}{x^2}\right) y' + \frac{2y}{x}
+    = 0 $ with boundary conditions $y(0)=1, y(1)=1$ in the limit $\epsilon \to 0^+$.
+    Use only the variables and constants given in the problem; do not define additional
+    constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = 1 + \left( x^{-2} + 2\varepsilon(x^{-3} - x^{-2}) - 1 \right)
+    e^{-2\varepsilon^2 / x}}$
+  parameters: $x; \varepsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + y'(x) = -e^{-x}$ with boundary conditions $y(0) = 1, y(1) = 2$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = e^{-x} + 2 - e^{-1} - (2 - e^{-1})e^{-x/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(t)
+    + (t-2) y'(t) = t$ with boundary conditions $y(0) = 1, y(1) = 0$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(t) = t + 2 \ln(2-t) + 1 - 2 \ln(2) - (2 - 2 \ln(2)) e^{-\frac{1-t}{\epsilon}}}$
+  parameters: $t; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    (t-2) y' = t^2$ with boundary conditions $y(0) = 0, y(1) = e^{-1/3}$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{ y(x) = \frac{t^2}{2} + 2t + 4\ln \left( \frac{2-t}{2} \right)
+    + \left( e^{-1/3} -\frac{5}{2} + 4\ln 2 \right)\exp\left( \frac{t-1}{\epsilon}\right)}$
+  parameters: $t; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''-(1+2x^2)y+2=0$
+    with boundary conditions $y(0)=y(1)=1$ in the limit $\epsilon \to 0^+$. Use only
+    the variables and constants given in the problem; do not define additional constants.
+    Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x)=\frac{2}{1+2x^2}-e^{-\frac{x}{\sqrt{\epsilon}}}+\frac{1}{3}e^{\frac{\sqrt{3}(x-1)}{\sqrt{\epsilon}}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' -
+    2 \tan(x) y' + y = 0$ with boundary conditions $y(-1) = y(1) = 1$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y = e^{-2 \tan(1) (1-x)/\epsilon} + e^{-2 \tan(1) (x+1)/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y'' +
+    2 \tan(x) y' - y = 0$ with boundary conditions $y(-1) = y(1) = 1$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = \sqrt{\frac{\sin(x)}{\sin(1)}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)+(1+2x)
+    y'(x)+8y(x)=0$ with boundary conditions $y(0)=1, y(1)=2$ in the limit $\epsilon
+    \to 0^+$. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = \frac{162}{(1+2x)^4} - 161 e^{-x/ \epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)+(2+3x)y'(x)+6y(x)=0$
+    with boundary conditions $y(0)=1, y(1)=3$ in the limit $\epsilon \to 0^+$. Use
+    only the variables and constants given in the problem; do not define additional
+    constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{\frac{75}{(2+3x)^2}-\frac{71}{4}e^{-2x/ \epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    - 2y(x) = e^{-x}$ with boundary conditions $y(0)=0, y(1)=1$ in the limit $\epsilon
+    \to 0^+$. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = -\frac{1}{2} e^{-x} + \frac{1}{2} \exp\left(-\sqrt{\frac{2}{\epsilon}}x\right)
+    + \left(1 + \frac{1}{2} e^{-1}\right) \exp\left(-\sqrt{\frac{2}{\epsilon}}(1-x)\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)+(1+3x)y'(x)+9y(x)=0$
+    with boundary conditions $y(0)=2,y(1)=3$ in the limit $\epsilon \to 0^+$. Use
+    only the variables and constants given in the problem; do not define additional
+    constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = \frac{192}{(1+3x)^3} - 190 e^{-x/ \epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + x^2y'  + x^2 = 0$ with boundary conditions $y(0) = 0, y(1) = -32$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x,\epsilon) = -x - 31 \frac{\int_0^{x^3/(3\epsilon)} t^{-2/3}
+    e^{-t} dt}{\Gamma(1/3)}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $0.005 y''(x) +
+    x^2y'  + x = 0$ with boundary conditions $y(0) = 0, y(1) = -32$. Use only the
+    variables and constants given in the problem; do not define additional constants.
+    Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = -23.4198 \int_{0}^{x/0.005^{1/3}} e^{-s^3/3} ds - \int_{0}^{x/0.005^{1/3}}
+    e^{-s^3/3} \left( \int_{0}^{s} t e^{t^3/3} dt \right) ds}$
+  parameters: $x; s;t $
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    - (1 + \sin x)\, y'(x) - y(x) = 0$ with boundary conditions $y(0) = 1, y(1) =
+    1$ in the limit $\epsilon \to 0^+$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x,\epsilon)=\exp\left( -\int_0^x \frac{dt}{1 + \sin t} \right)+\left(1
+    - 0.493\right) e^{-(1 + \sin 1)\, \frac{1 - x}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + y' + x(y) = 0$ with boundary conditions $y(0) = 1, y(1) = 0$ in the limit $\epsilon
+    \to 0^+$. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x,\epsilon) = e^{-x/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + 2y' (x)+ 4y(x) = 0$ with boundary conditions $y(0) = 1, y'(0) = 1$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = (1 + \frac{\epsilon}{2})e^{-2x} -  \frac{\epsilon}{2} e^{-\frac{2x}{\epsilon}}}$
+  parameters: $x;\epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    - y'(x) + e^{y(x)} = 0$ with boundary conditions $y(0) = -3, y(1) = 0$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = -\ln(e^{3}-x) + \ln(e^{3}-1)e^{\frac{x-1}{\epsilon}}} $
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y"(x)
+    + (1 + x)^2 y'(x) + y(x) = 0$ with boundary conditions $y(0) = 1, y(1) = 1$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x, \epsilon = e^{(\frac{1}{1+x} - \frac{1}{2})} + (1-e^{1/2})e^{-\frac{x}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid approximation to the solution of $\epsilon y''(x)
+    + \frac{3x+1}{2x+1}y'(x) - y(x)^{2} = 0$ with boundary conditions $y(0)=0, y(1)=1$
+    in the limit $\epsilon \to 0^+$. Use only the variables and constants given in
+    the problem; do not define additional constants. Place your final solution in
+    a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x)=\frac{9}{15-6x-\ln(\frac{3x+1}{4})}-\frac{9}{15+\ln(4)}e^{-x/\epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $$
+    \epsilon y'' + 2y' + y = \cos\left(\frac{\pi x}{2}\right)$$ with boundary conditions  in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $$ \boxed{y = \frac{1}{1+\pi^2}\left(\cos\left(\frac{\pi x}{2}\right)+\pi\sin\left(\frac{\pi
+    x}{2}\right)\right) - \frac{\pi \sqrt{e}}{1+\pi^2} e^{-x/2} + \frac{\pi(1+e)}{1+\pi^2}
+    e^{-2(x+1)/\epsilon}} $$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + x y' = 0$ with boundary conditions $y(-1) = 1$, $y(1) = 2$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y = \frac{1}{2} \text{erf}\left(\frac{x}{\sqrt{2\epsilon}}\right)
+    + \frac{3}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + \sin\left(\frac{\pi x}{2}\right) y' = 0$ with boundary conditions $y(-1)
+    = 0$, $y(1) = 1$ in the limit $\epsilon \to 0^+$. Use only the variables and constants
+    given in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \frac{1}{2} \text{erf}\left(x \sqrt{\frac{\pi}{4\epsilon}}\right)
+    + \frac{1}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + (e^x - 1) y' = 0$ with boundary conditions $y(-1) = 0$, $y(1) = 1$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \frac{1}{2} \text{erf}\left(\frac{x}{\sqrt{2\epsilon}}\right)
+    + \frac{1}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + x y' + x y = 0$ with boundary conditions $y(-1) = 1$, $y(1) = 2$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment
+  solution: $\boxed{y = e^{-(x+1)} \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2} + 2e^{1-x}
+    \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of \epsilon
+    y'' + x y' + x y = x, with boundary conditions $y(-1) = 1$, $y(1) = 2$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + (1+e^{1-x}) \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of \epsilon
+    y'' + x y' + x y = x^2 with boundary conditions $y(-1) = 1$, $y(1) = 3$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. The solution should be smooth, single-form
+    expression which is valid across the entire domain. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \left(x - 1 + 3e^{-(x+1)}\right) \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + \left(x - 1 + 3e^{1-x}\right) \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + x y' + x y = x$ with boundary conditions $y(-1) = 0$, $y(1) = 0$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \left(1 - e^{-(x+1)}\right) \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + \left(1 - e^{1-x}\right) \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of \epsilon
+    y'' + x y' + x y = x(x-1) with boundary conditions $y(-1) = 0$, $y(1) = 0$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. The solution should be smooth, single-form
+    expression which is valid across the entire domain. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \left(x - 2 + 3e^{-(x+1)}\right) \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + \left(x - 2 + e^{1-x}\right) \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of \epsilon
+    y'' + x y' + x y = x with boundary conditions $y(-1) = 0$, $y(1) = 1$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. The solution should be smooth, single-form
+    expression which is valid across the entire domain. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \left(1 - e^{-(x+1)}\right) \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + x y' + 2x^2 y = 0$ with boundary conditions $y(-1) = 1$, $y(1) = 2$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = e^{1-x^2} \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + 2e^{1-x^2} \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + x y' + x^2 y = x^2$ with boundary conditions $y(-1) = 1$, $y(1) = 2$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y_{unif}(x, \epsilon) = \frac{1-\text{erf}(x/\sqrt{2\epsilon})}{2}
+    + \left(1 + e^{(1-x^2)/2}\right) \frac{1+\text{erf}(x/\sqrt{2\epsilon})}{2}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + \cos(x) y ' + \sin(x) y= 0$ with boundary conditions $y(0) = 0$, $y(1)=
+    1$ in the limit $\epsilon \to 0^+$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = \frac{\cos(x)- e^{-x/\epsilon}}{\cos(1)}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + xy' = x \cos{x}$ with boundary conditions $y(1) = 2; y(-1) = 2$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x,\epsilon) \approx 2 + \sin x - \sin 1 \erf \left(\frac{x}{\sqrt{2\epsilon}}\right)}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + (1+x^2)y' - y = 0$ with boundary conditions $y(1) = 1; y(-1) = 1$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x,\epsilon) \approx \exp\left(\tan^{-1}(x) - \frac{\pi}{4}\right)
+    + \left(1 - e^{-\pi/2}\right) e^{- 2(x+1)/ \epsilon}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' - x^2y' - (3+x^3) = 0$ with boundary conditions  $y(1) = 1; y(2) = 1$ in the
+    limit $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y_{uniform}(x) = \frac{3}{x} -\frac{x^2}{2} -\frac{3}{2} + 3e^{\frac{-4(2-x)}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + \sinh(\pi x)y' - y = 0$ with boundary conditions  $y(1) = 1; y(2) = 1$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x)=(\frac{\tanh(\frac{\pi x}{2})}{\tanh(\pi)})^{\frac{1}{\pi}}
+    + (1 - (\frac{\tanh(\frac{\pi}{2})}{\tanh(\pi)})^{\frac{1}{\pi}}) \exp(\frac{\sinh(\pi)(1-x)}{\epsilon})}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' - \tanh(\pi x)y' - y = 0$ with boundary conditions  $y(1) = 1; y(2) = 1$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = [\frac{\sinh(\pi)}{\sinh(\pi x)}]^\frac{1}{\pi} + (1-[\frac{\sinh(\pi)}{\sinh(2\pi)}]^\frac{1}{\pi})e^{\tanh(2\pi)\frac{-(2-x)}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + \cosh(x)y' - e^xy = 0$ with boundary conditions $y(0) = \frac{1}{5}; y(1)
+    = 5$ in the limit $\epsilon \to 0^+$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y_{uniform}(x) = \frac{5}{e^2+1}(e^{2x} + 1) + e^{\frac{-x}{\epsilon}}(\frac{1}{5}-\frac{10}{e^2+1})}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' - \tanh(x^2)y' - xy = 0$ with boundary conditions $y(1) = 1; y(2) = 1$ in
+    the limit $\epsilon \to 0^+$. Use only the variables and constants given in the
+    problem; do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{y(x) = [\frac{\sinh(1)}{\sinh(x^2)}]^\frac{1}{2} + (1-[\frac{\sinh(1)}{\sinh(4)}]^\frac{1}{2})e^{\tanh(4)\frac{-(2-x)}{\epsilon}}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y + \sqrt(x) y' - y = 0$ with boundary conditions $y(0)=0, y(1)=e^2$ in the limit
+    $\epsilon \to 0^+$. Use only the variables and constants given in the problem;
+    do not define additional constants. Place your final solution in a $\boxed{}$
+    LaTeX environment.
+  solution: $\boxed{ e^{2\sqrt{x}} - 1 + \frac{\int_0^{\frac{x}{\epsilon^{2/3}}} e^{-\frac{2}{3}s^{3/2}}
+    \, ds}{\left(\frac{2}{3}\right)^{1/3} \Gamma\left(\frac{2}{3}\right)} }$
+  parameters: $x; \epsilon; s$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + y' \sin(x) + y \sin(2x) = 0$ with boundary conditions $y(0) = \pi, y(\pi)
+    = 0$ in the limit $\epsilon \to 0^+$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{\pi - \sqrt{2\pi} \int_0^{\frac{x}{\sqrt{\epsilon}}} e^{-s^2/2}
+    \, ds}$
+  parameters: $x; \epsilon; s$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y'' + \tanh(x)y' + tanh^2(x)y=tanh^2(x)$ with boundary conditions $y(-2)=1, y(2)=2$
+    in the limit $\epsilon \to 0^+$. Use only the variables and constants given in
+    the problem; do not define additional constants. Place your final solution in
+    a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x)=1+\frac{\cosh(2)}{2\cosh(x)}(1+\text{erf}(\frac{x}{\sqrt{2\epsilon}}))}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $\epsilon
+    y''  + \tanh^2(x)y + \tanh(x)y'=\tanh(x)\text{sech}(x)$ with boundary conditions
+    $y(-2)=0, y(2)=0$ in the limit $\epsilon \to 0^+$. Use only the variables and
+    constants given in the problem; do not define additional constants. Place your
+    final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{\frac{x-2\text{erf}(\frac{x}{\sqrt{2\epsilon}})}{\cosh(x)}}$
+  parameters: $x; \epsilon$
+- prompt: Find a uniformly valid solution of $ \epsilon y'' - y' = 0$ with boundary
+    conditions $ y(0) = 0, y(1) = 1$ in the limit $\epsilon = 0$ from the positive
+    direction. Use only the variables and constants given in the problem; do not define
+    additional constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $\boxed{y(x) = \frac{1-e^{\frac{x}{\epsilon}}}{1-e^{\frac{1}{\epsilon}}}}$
+  parameters: $x;\epsilon$
+- prompt: Find a uniformly valid leading order approximation to the solution of $$\epsilon
+    y'' - y' = \sin(\pi x)$$ with boundary conditions $ y(0) = 0, y(1) = 0$ . Use
+    only the variables and constants given in the problem; do not define additional
+    constants. Place your final solution in a $\boxed{}$ LaTeX environment.
+  solution: $$\boxed{y(x) = \frac{\cos(\pi x) - 1}{\pi} + \frac{2}{\pi}e^{\frac{x-1}{\epsilon}}}$$
+  parameters: $x;\epsilon$
+- prompt: 'Find the lowest-order uniform approximation to the boundary-value problem:
+    $$ \epsilon y'''' + y'' \sin x + y \sin(2x) = 0 $$ with boundary conditions:$$
+    y(0) = \pi, \quad y(\pi) = 0 $$.'
+  solution: $$ \boxed{y(x) \approx \pi \, \text{erfc}\left(\frac{x}{\sqrt{2\epsilon}}\right)}
+    $$
+  parameters: $x;\epsilon$

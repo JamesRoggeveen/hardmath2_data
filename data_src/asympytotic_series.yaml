@@ -1,0 +1,37 @@
+meta:
+  name: Asympytotic Series
+  date: '2025-05-08'
+type: asympytotic_series
+problems:
+- prompt: Find an approximation using asymptotic series of $I(x) = \int_{x}^{\infty}t^{4}e^{-3t^4}dt$ in
+    the limit$x \rightarrow \infty$. Provide your answer in a $\boxed{}$ latex environment.
+    Do not use \cdots to indicate that the series continue on. Just give the three
+    terms and that's it
+  solution: $\boxed{e^{-3x^4}\Bigl(\frac{x}{12}+\frac{1}{144x^3}-\frac{1}{576x^7}+\frac{7}{6912x^{11}}-\frac{77}{82944x^{15}}+\frac{385}{331776x^{19}}-\frac{7315}{3981312x^{23}}+\frac{168245}{47775744x^{27}}-\frac{168245}{21233664x^{31}}+\frac{5215595}{254803968x^{35}}-\frac{182545825}{3057647616x^{39}}\Bigr)}$
+  parameters: $x$
+- prompt: Find the first three terms in the asymptotic series of $I(x)=\int_0^{\pi/2}
+    \frac{\cos{t}}{\sqrt{x\sin{t}+log(1+t^2)}}dt$ in the limit $x \to \infty$. Provide
+    your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x)=(\frac{2}{\sqrt{x}}-\frac{1}{3x^{3/2}}+\frac{3}{20x^{5/2}}
+    )}$
+  parameters: $x; t$
+- prompt: Find the first two terms in the asymptotic series of $I(x)=\int_0^{\pi/4}
+    e^{-x(\tan{t}-\frac{t^3}{6})}\sqrt{1+\sin^2(t)}dt$ in the limit $x \to \infty$.
+    Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x)=(1/x)(1-e^{-\frac{x \pi}{4}}) }$
+  parameters: $x; t$
+- prompt: Find a single expression with the first three terms in the asymptotic series
+    of "&B37&" in the limit "&C37&". Provide your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x)=\frac{\pi}{2} - \frac{\cos x}{x} + \frac{\sin x}{x^2}}$
+  parameters: $x; t$
+- prompt: Write the first two term asymptotic series of $I(x) = \int^\infty_x \frac{e^{-t^2}}{1+t^5}
+    dt$ in the limit $x \rightarrow \infty$. Do not approximate the denominator. Provide
+    your answer in a $\boxed{}$ latex environment.
+  solution: $\boxed{I(x) = e^{-x^2}(\frac{1}{2x(1+x^5)} - \frac{(1+6x^5)}{4x^3(1+x^5)^2})}$
+  parameters: $x; t$
+- prompt: Write the first two term asymptotic series of $I(x) = \int^x_1 \ln(xt^2)\cos(t^3)
+    dt$ in the limit $x \rightarrow \infty$. Provide your answer in a $\boxed{}$ latex
+    environment.
+  solution: $\boxed{I(x) = \frac{\ln(x^3)\sin(x^3)}{3x^2} - \frac{\ln(x)\sin(1)}{3}
+    -\frac{2(\ln(x^3)-1)\cos(x^3)}{9x^5} + \frac{2(\ln(x)-1)\cos(1)}{9}}$
+  parameters: $x; t$

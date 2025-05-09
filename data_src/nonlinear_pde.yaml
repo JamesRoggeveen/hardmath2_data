@@ -1,0 +1,573 @@
+meta:
+  name: Nonlinear Pde
+  date: '2025-05-08'
+type: nonlinear_pde
+problems:
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $$ \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial
+    x^2} + u^2 (1-u), \lim_{x \to \infty} u(x, t) = 0 \quad \text{and} \quad \lim_{x
+    \to -\infty} u(x, t) = 1 $$ in the limit . Please place your final solution in
+    a $\boxed{}$ LaTeX Environment.DONT USE \operatorname in your boxed solution.
+    There should be a free parameter $v$. Set $v=0.5$ YOU MUST DO THIS. If there are
+    multiple solutions please separate them with a ;.
+  solution: $$ \boxed{ u(x, t) = \frac{1}{2} \left[ 1 - \tanh\left( \frac{x - t/\sqrt{2}}{2\sqrt{2}}
+    \right) \right] } $$
+  parameters: $x; t;$
+- prompt: Given the following PDE:$$\frac{\partial y}{\partial t} = \frac{\partial^2y}{\partial
+    x^2} - y^5, \quad y(x,t)>0$$For the $D\frac{\partial^2y}{\partial x^2}$ and $
+    \alpha y^5 t$ terms of the same order of magnitude, find the asymptotic behavior
+    of $y$ at times after $y$ blows up. Please place your final solution in a $\boxed{}$
+    LaTeX Environment. Don't use a * symbol in your notation.
+  solution: $\boxed{y(x,t) = (3/4)^{1/4} x^{-\frac{1}{2}}}$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behavior) for the non-linear partial
+    differential equation  $$\frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial
+    x^2} + 2v^2 u^2 (1 - u), \quad \lim_{x \to \infty} u(x, t) = 0, \quad \lim_{x
+    \to -\infty} u(x, t) = 1$$  in the limit $t \rightarrow \infty$. Please place
+    your final solution in a $\boxed{}$ LaTeX Environment. There should be a free
+    parameter $v$. Set $v=0.5$. If there are multiple solutions please separate them
+    with a ";".
+  solution: $\boxed{u(x, t) = \frac{1}{1 + e^{0.5(x - 0.5 t)}}}$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $$ \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial
+    x^2} + 2 u(1-u)(u-\frac{1}{4}), \quad \lim_{x \to -\infty} u(x,t) = 1, \quad \lim_{x
+    \to \infty} u(x,t) = 0 $$ in the limit $t \rightarrow \infty $. Please place your
+    final solution in a $\boxed{}$ LaTeX Environment.DONT USE \operatorname in your
+    boxed solution. There should be a free parameter $v$. Set $v=0.5$ YOU MUST DO
+    THIS. If there are multiple solutions please separate them with a ;.
+  solution: $$ \boxed{ u(x, t) = \frac{1}{1 + e^{x - 0.5t}} } $$
+  parameters: $x; t;$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $$ \frac{\partial u}{\partial t} + 6 u^2 \frac{\partial
+    u}{\partial x} + \frac{\partial^3 u}{\partial x^3} = 0, \quad u(x, t) > 0, \lim_{x
+    \to \pm \infty} u(x,t) = 0 $$ in the limit $t \rightarrow \infty $. Please place
+    your final solution in a $\boxed{}$ LaTeX Environment.DONT USE \operatorname in
+    your boxed solution. There should be a free parameter $v$. Set $v=0.5$ YOU MUST
+    DO THIS. If there are multiple solutions please separate them with a ;.
+  solution: $ \boxed{u_1(x, t) = \frac{1}{\sqrt{2}} \sech\left(\frac{x - 0.5t}{\sqrt{2}}\right)}
+    $
+  parameters: $x; t;$
+- prompt: Find a localized self similarity solution (soliton behvaiour) for the non-linear
+    partial differential equation $\partial_{xx} u + \tanh(u \partial_x u) \sech(u
+    \partial_y u) + \sin^2(\partial_{xy} u) - e^{xy} = 0$, $u(0, y) = \cosh(y)$, $\partial_x(0,
+    y) = \sinh(y)$ with $u(0, 0) = 1$ as the maximum value. Localization means $u(x,t)$
+    and its derivatives vanish at $t= \pm \infty$. Please place your final solution
+    in a $\boxed{}$ LaTeX Environment.
+  solution: $\boxed{u(x, t) = sech(\sqrt{\frac{1}{2}} (x-\frac{t}{2}))}$
+  parameters: $x; t$
+- prompt: Find a localized self similarity solution (soliton behvaiour) for the non-linear
+    partial differential equation $u_{tt}-u_{xx}-3\bigl(u^{2}\bigr)_{xx}-u_{xxxx}=0$
+    with $u(0, 0) = 1/4$ as the maximum value and $\partial_t u(-2, 1) < 0$. Localization
+    means $u(x,t)$ and its derivatives vanish at $t= \pm \infty$. Please place your
+    final solution in a $\boxed{}$ LaTeX Environment.
+  solution: $\boxed{u(x, t) = \frac{1}{4\cosh^2(\frac{x-\sqrt{\frac{3}{2}}t}{2\sqrt{2}})}}$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $\partial_t u +\sqrt{u}\partial_x u + \partial_x^3 u=0,
+    \lim_{|x|\to\infty} u(x,t)=0$ in the limit $t\rightarrow\infty$. Please place
+    your final solution in a $\boxed{}$ LaTeX Environment. There should be a free
+    parameter $v$. Set $v=0.5$. If there are multiple solutions please separate them
+    with a ;.
+  solution: $\boxed{u(x,t) = \frac{225}{256} \sech^4( \frac{\sqrt{2}}{8} (x - 0.5t)
+    )}$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behaviour) for the non-linear partial
+    differential equation  $$ \partial_t u = \partial_{xx} u - \frac{(\partial_x u)^2}{u}
+    + u \ln u \left(1 - (\ln u)^2\right) $$  that connects the stable state $u = e$
+    and $u = e^{-1}$ in the limit $|t| \rightarrow \infty$. Please place your final
+    solution in a \boxed{} LaTeX environment. If there are multiple solutions please
+    separate them with a ;.
+  solution: $\boxed{u(x,t) = e^{\tanh\left(\frac{x}{\sqrt{2}}\right)} ; u(x,t) = e^{-\tanh\left(\frac{x}{\sqrt{2}}\right)}}$
+  parameters: $x; t$
+- prompt: Find an approximate solution describing the behavior for the non-linear
+    partial differential equation $$ \frac{\partial u}{\partial t} = u^2 \frac{\partial^2
+    u}{\partial x^2} + \tan(u);\quad \frac{\partial u}{\partial x}(0, t) = 0,\quad
+    u(x\to\pm\infty, t) = 0.$$. The initial condition is  $$ u(x, 0) = \begin{cases}
+    1 & \text{if } |x| < 2 \\ 0 & \text{if } |x| \ge 2 \end{cases} $$  If the solution
+    blows up in finite time $t^*$, seek the behavior for the limit $t \rightarrow
+    t^*$ around the blowup point. A local approximation is sufficient. Solve fully,
+    such that the final solution contains only known functions (no undefined functions).
+    Please place your final solution in a \boxed{} LaTeX Environment. If there is
+    any free parameter, set it equal to 5. $t^*$ should not be in the box; if there
+    is a $t^*$, replace it with 0.5. The solution should not be in cases and should
+    not contain any text. If there are multiple solutions please separate them with
+    a ;. If you cannot find a solution, return zero. If you encounter a function like
+    $\Theta$, replace it with $Theta$ with no backslash.
+  solution: $$ \boxed{u(x,t) \approx \frac{\pi}{2} - \sqrt{2(0.1-t)} - 5 \frac{x^2}{\sqrt{0.1-t}}}
+    $$
+  parameters: $x; t$
+- prompt: Find an approximate solution describing the behavior for the non-linear
+    partial differential equation $$ \frac{\partial u}{\partial t} = u^4 \frac{\partial^2
+    u}{\partial x^2} + \tan(u);\quad \frac{\partial u}{\partial x}(0, t) = 0,\quad
+    u(x\to\pm\infty, t) = 0.$$. The initial condition is  $$ u(x, 0) = \begin{cases}
+    1 & \text{if } |x| < 2 \\ 0 & \text{if } |x| \ge 2 \end{cases} $$  If the solution
+    blows up in finite time $t^*$, seek the behavior for the limit $t \rightarrow
+    t^*$ around the blowup point. A local approximation is sufficient. Solve fully,
+    such that the final solution contains only known functions (no undefined functions).
+    Please place your final solution in a \boxed{} LaTeX Environment. If there is
+    any free parameter, set it equal to 5. $t^*$ should not be in the box; if there
+    is a $t^*$, replace it with 0.5. The solution should not be in cases and should
+    not contain any text. If there are multiple solutions please separate them with
+    a ;. If you cannot find a solution, return zero. If you encounter a function like
+    $\Theta$, replace it with $Theta$ with no backslash.
+  solution: $$ \boxed{u(x,t) \approx \frac{\pi}{2} - \sqrt{2(0.1-t)} - 5 \frac{x^2}{\sqrt{0.1-t}}}
+    $$
+  parameters: $x; t$
+- prompt: Find an approximate analytical solution $u(x, t)$ to the following nonlinear
+    partial differential equation $$\frac{\partial u}{\partial t} + 3u^2 \frac{\partial
+    u}{\partial x} = 0.3 \frac{\partial^2 u}{\partial x^2} - 1.5 u; \quad u(0, t)
+    = 1 \quad \text{for } t > 0.$$ The solution is sought for $x \ge 0$ and $t \ge
+    0$. The initial condition is $$u(x, 0) = 0 \quad \text{for } x > 0.$$  Derive
+    an approximate analytical solution $u(x, t)$ that captures the dominant behavior
+    in the limit $t \rightarrow \infty_-$. Solve fully, such that the final solution
+    contains only known functions (no undefined functions). Please place your final
+    solution in a \boxed{} LaTeX Environment. If there are any free constants, approximate
+    them numerically. There should be no variable (non-evaluated) constants or free
+    constraints, however. Do not box more than one equation! The approximation should
+    include the zeroth-order term and the first-order correction term accounting for
+    the nonlinearity.
+  solution: $$\boxed{u(x, t \rightarrow \infty) \approx \left(1 + \frac{\sqrt{5}}{4}\right)
+    e^{-\sqrt{5}x} - \frac{\sqrt{5}}{4} e^{-3\sqrt{5}x}}$$
+  parameters: $x; t$
+- prompt: Find a self-similarity solution (soliton behavior) for $\partial_t u = \partial_{xx}
+    u + u (4 - u^2)$ that connects the $u = 0$ solution in the $t \rightarrow -\infty$
+    limit to $u = 2$ in the $t \rightarrow \infty$ limit, subject to the boundary
+    condition of $u(0, 0) = 1$. Please place your final solution in a $\boxed{}$ LaTeX
+    Environment. The only remaining parameters in your final solution should be $x$
+    and $t$; do not define additional parameters or constants.
+  solution: $$\boxed{u(x, t) = 2(1 + e^{-\sqrt{2}(x + 3\sqrt{2}t)})^{-1}}$$
+  parameters: $x; t$
+- prompt: Find a self-similarity solution (soliton behavior) for $\partial_{tt} u
+    - \partial_{xx} u + 2u ((\partial_t u)^2 - (\partial_x u)^2) = 2u^5 - u$ that
+    travels at velocity $v = 1/\sqrt{2}$, subject to the boundary condition of $u(0,
+    0) = 1$. Please place your final solution in a $\boxed{}$ LaTeX Environment. The
+    only remaining parameters in your final solution should be $x$ and $t$; do not
+    define additional parameters or constants.
+  solution: $$\boxed{u(x, t) = 2(e^{\sqrt{2}(x - (1/\sqrt{2})t)} + e^{-\sqrt{2}(x
+    - (1/\sqrt{2})t)})^{-1}}$$
+  parameters: $x; t$
+- prompt: Find a solution for the non-linear partial differential equation $\frac{\partial
+    u}{\partial t} = -5u\frac{\partial u}{\partial x} -2.5u^2\frac{\partial u}{\partial
+    x} - 0.5\frac{\partial^3 u}{\partial x^3},\lim_{x \to \pm \infty} u(x,t) = 0,u'(x,t)
+    = 0,u''(x,t) = 0$. Please place your final solution in a $\boxed{}$ LaTeX Environment.
+  solution: $\boxed{u(x, t) = \tanh\left( \frac{x }{\sqrt{2}} \right)}$
+  parameters: $x; t$
+- prompt: Find a self-similarity solution for the non-linear partial differential
+    equation $ \partial_t u = \partial_{xx} u - \frac{(\partial_x u)^2}{u} + u \ln
+    u \left(1 - (\ln u)^2\right) - \delta \partial_x u $ where $\delta$ is a real
+    constant in the limit $|t| \rightarrow \infty$ Please place your final solution
+    in a $\boxed{}$ LaTeX environment. If there are multiple solutions please separate
+    them with a semicolon.
+  solution: $\boxed{u(x,t) = e^{\tanh\left(\frac{x-\delta t}{\sqrt{2}}\right)}; u(x,t)
+    = e^{-\tanh\left(\frac{x-\delta t}{\sqrt{2}}\right)}}$
+  parameters: $x; t; \delta$
+- prompt: Find a self-similar solution (soliton behaviour) for the non-linear partial
+    differential equation $\partial_t u - \frac{10}{\sqrt{30}} \, \partial_x u = \frac{2}{5}
+    \, \partial_x^2 u + 2 u (1 - u), \quad \lim_{x \to -\infty} u(x,t) = 1, \quad
+    \lim_{x \to \infty} u(x,t) = 0$ in the limit $t \rightarrow \infty$. Please write
+    the full equation and don't introduce new variables. Place your final solution
+    in a $\boxed{}$ LaTeX Environment. If there are multiple solutions, please separate
+    them with a ;.
+  solution: $\boxed{u(x,t) = \frac{1}{\left(1 + \exp\left[\sqrt{\frac{5}{6}}\left(x
+    + \frac{10}{\sqrt{30}} t \right)\right] \right)^2}}$
+  parameters: $x; t$
+- prompt: Find a self similarity solution for the non-linear partial differential
+    equation $ \partial_t u = \partial_{xx} u + (2u-\sqrt{5})(1-u^2), \lim_{x \to
+    -\infty} u(x,t) = -1, \lim_{x \to \infty} u(x,t) = 1 $ in the limit $t \rightarrow
+    \infty$. Please place your final solution in a $\boxed{}$ LaTeX Environment.
+  solution: $ \boxed{ u(x,t)=\tanh(x-\sqrt{5}t) }$
+  parameters: $x; t$
+- prompt: Please solve the non-linear partial differential equation $\frac{\partial^2
+    u}{\partial t^2}+ \frac{\partial^2 u}{\partial x \partial t}= \left( \frac{\partial
+    u}{\partial t} \right)^2+ \frac{\partial u}{\partial x} \cdot \frac{\partial u}{\partial
+    t}$ with initial conditions $u(x, 0) = 0, \quad u_t(x, 0) = x^2$ . Please place
+    your final solution in a $\boxed{}$ LaTeX Environment.
+  solution: $\boxed{u(x, t) = -\ln\left(1 - \frac{t^3}{3} + x^2 t - x t^2\right)}$
+  parameters: $x; t$
+- prompt: 'Find a self-similarity solution (soliton behaviour) for the non-linear
+    partial differential equation $$\frac{\partial u}{\partial t} = \frac{\partial^2
+    u}{\partial x^2} + 5u(1-u)$$ with boundary condition: $\lim_{x \to -\infty} u(x,t)
+    = 1,\lim_{x \to \infty} u(x,t) = 0$. Please place your final solution in a $\boxed{}$
+    LaTeX Environment. If there are multiple solutions, please separate them with
+    a ;.'
+  solution: $\boxed{u(x,t) =\frac{1}{1 + e^{\frac{\sqrt{5}}{2}(x - 2\sqrt{5}\, t)}}}$
+  parameters: $x; t$
+- prompt: Consider the PDE $\u_t + \frac{2x}{t} u_x = u_{xx} + (1-u^2) \sinh(x), \quad
+    u(x,1) = \frac{1}{4}e^{-x^2} -1, \lim_{|x| \to \infty} u(x, t) = -1$. Find the
+    solution in the limit $t \to \infty$. Use only the variables and constants given
+    in the problem; do not define additional constants. Place your final solution
+    in a $\boxed{}$ LaTeX environment. Do not define additional parameters or constants.
+  solution: $\boxed{ u(x,t) = \tanh(-\cosh(x) + x^2/t)}$
+  parameters: $x; t$
+- prompt: For $0 < x < 1$, $t > 0$ and a small parameter $0 < \epsilon \ll 1$ consider
+    the PDE $u_t = \epsilon u_{xx} + u(1-u), \quad u(0, t) = 1, u(1, t) = 1/2, u(x,
+    0) =1.$. Find the leading order solution as $t \to \infty$. Please place your
+    final solution in a $\boxed{}$ LaTeX Environment
+  solution: $\boxed{u(x,t \to \infty) \approx \frac{3}{2} \left(\frac{(5+2\sqrt{6})
+    e^{(1-x)/\sqrt{\epsilon}} - 1}{(5+2\sqrt{6}) e^{(1-x)/\sqrt{\epsilon}} + 1}\right)^2
+    - \frac{1}{2}}$
+  parameters: $x; t; \epsilon$
+- prompt: Find a self similarity solution (traveling wave front) for the reaction-diffusion
+    equation $$ \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2}
+    + 4u(1 - u^2) $$ that connects the stable state $u=-1$ as $x \to -\infty$ to the
+    stable state $u=+1$ as $x \to +\infty$. The solution should satisfy $u(x,t) =
+    0$ when $x=ct$ (i.e., the center of the wave where $\xi=0$). Please place your
+    final solution $u(x,t)$ in a \boxed{} LaTeX environment. If you have a free parameter,
+    set it to 2.
+  solution: $\boxed{u(x,t) = \tanh(\sqrt{2} x)}$
+  parameters: $x; t$
+- prompt: Find the solution behavior of $\frac{\partial u}{\partial t} = \frac{\partial}{\partial
+    x} \left( u^2 \frac{\partial u}{\partial x} \right)$ in the limit $t \to \infty$
+    (similarity solution) with boundary conditions $\lim_{|x| \to \infty} u(x,t) =
+    0 \text{ and initial mass } \int_{-\infty}^{\infty} u(x,0) dx = M$. Please place
+    your final solution in a $\boxed{}$ LaTeX Environment. When returning the answer,
+    set M=6, center of mass to x=0. Return the expression only for where u(x,t) is
+    nonzero. If you have another free parameter, set it to 3.
+  solution: $\boxed{u(x,t) = \frac{1}{(4t)^{1/4}} ( \frac{12}{\pi} - (\frac{x}{(4t)^{1/4}})^2
+    )^{1/2}}$
+  parameters: $x; t$
+- prompt: Solve the following nonlinear partial differential equation $$\partial_t
+    u + \partial_x u = u \partial_{xx}u + (x-t)^{-2}$$by finding a travelling wave
+    solution, and determine its leading-order behavior as $|x-t| \to \infty$. Your
+    final answer should contain only the variables $x$ and $t$. In particular, do
+    not define any new functions or constants. Leave your final answer in a $\boxed{}$
+    LaTeX environment, so that plugging in values of $x$ and $t$ yield a numerical
+    answer. Replace any absolute value signs with the usual () brackets for easy evaluation.
+  solution: $\boxed{(\ln((x-t)^2))^{1/2}}$
+  parameters: $x; t$
+- prompt: Find a localized travelling wave solution (soliton) for the nonlinear partial
+    differential equation $u_{tt} - u_{xx} - 6 (u^2)_{xx} - u_{xxxx}=0$ subject to
+    the condition that the maximum value is $u(0,0) = \frac{1}{2}$.
+  solution: $\boxed{u(x,t) = \frac{1}{2} \text{ sech}^2(\frac{1}{\sqrt{2}} (x - \sqrt{3}t));
+    u(x,t) = \frac{1}{2} \text{ sech}^2(\frac{1}{\sqrt{2}} (x + \sqrt{3}t))}$
+  parameters: $x; t$
+- prompt: Find a localized travelling wave solution (soliton) for the nonlinear partial
+    differential equation $u_{tt} - u_{xx} - 2 (u^3)_{xx} - u_{xxxx}=0$ subject to
+    the condition that the maximum value is $u(0,0) = \frac{\sqrt{3}}{3}$.
+  solution: $\boxed{u(x,t) = \frac{\sqrt{3}}{3} \text{ sech}(\frac{1}{\sqrt{3}} (x
+    - \frac{2}{\sqrt{3}}t)); u(x,t) = \frac{\sqrt{3}}{3} \text{ sech}(\frac{1}{\sqrt{3}}
+    (x + \frac{2}{\sqrt{3}}t))}$
+  parameters: $x; t$
+- prompt: 'Find a self-similarity solution (soliton behaviour) for the non-linear
+    partial differential equation $$\frac{\partial u}{\partial t} + u^2 \frac{\partial
+    u}{\partial x} + \frac{\partial^3 u}{\partial x^2 \partial t} = 0$$ with boundary
+    condition: $\lim_{x \to -\infty} u(x,t) = 0,\lim_{x \to \infty} u(x,t) = 0$. Please
+    place your final solution in a $\boxed{}$ LaTeX Environment. If there are multiple
+    solutions, please separate them with a ;.'
+  solution: $\boxed{u(x,t)= \sqrt{6} \, \mathrm{sech}(x-t)}$
+  parameters: $x; t$
+- prompt: Suppose we have the following Reaction-Diffusion type Partial Differential
+    Equation, $ \partial_t u = \partial_{xx} u - \alpha (u - \frac{1}{5}) + \beta
+    (u - \frac{1}{5})^3 $, for some function $u(x,t)$ where $\alpha,\beta > 0$.  Please
+    find a self similarity solution (solition behavior) that connects the state $u
+    = \frac{1}{5}$ in the limit $t \rightarrow -\infty $ to $u = \frac{1}{5}$ in the
+    limit $t \rightarrow +\infty$. Use the substitution $z=x-vt$ and express the answer
+    in terms of $z$. Please place your final solution in a $\boxed{}$ LaTeX Environment.  If
+    there are multiple solutions please separate them with a ;.
+  solution: $\boxed{u(x,t) = \sqrt{\frac{2 \alpha}{\beta}}\text{sech}(\sqrt{\alpha}
+    z) + \frac{1}{5}; u(x,t) = -\sqrt{\frac{2\alpha}{\beta}}\text{sech}(\sqrt{\alpha}
+    z) + \frac{1}{5}}$
+  parameters: $x; t;\alpha;\beta; z$
+- prompt: Suppose we have the following Partial Differential Equation, $\partial_{xxx}u
+    + \partial_xu(1+\partial_xu) = \partial_tu$, for some function $u(x,t)$.  Please
+    find a traveling wave solution that connects the steady states $u = 1$ in the
+    limit $t \rightarrow -\infty $ and $u = 3$ in the limit $t \rightarrow +\infty$.
+    Place your final solution in a $\boxed{}$ LaTeX Environment.  If there are multiple
+    solutions please separate them with a ;.
+  solution: $\boxed{u(x,t) = 2+\tanh(\frac{1}{6}(x+\frac{10}{9}t))}$
+  parameters: $x; t$
+- prompt: Find a traveling-wave solution to the nonlinear partial differential equation
+    $$\partial_t u + \partial_x u = -u^3 \partial_{xx}u + (x-t)^2 + 1$$ and determine
+    its leading-order behavior as $|x-t| \to \infty$. Please place your final solution
+    in a $\boxed{}$ LaTeX Environment. The only remaining parameters in your final
+    solution should be $x$ and $t$; do not define additional parameters or constants.
+    There should be no words inside the $\boxed{}$ environment; only an expression
+    that can be evaluated by subsituting in values of $x$ and $t$. If there are absolute
+    values in your final answer, replace those with parentheses before putting the
+    answer in the $\boxed{}$ environment.
+  solution: $$\boxed{u(x,t) = \sqrt{2} (x-t) (\ln(|x-t|))^{\frac{1}{4}}}$$
+  parameters: $x;t$
+- prompt: Find the solution that contains a logarithmic term to the nonlinear PDE
+    for $x \in (0, \pi)$, $t > 0$, $ t u_t - x u_x - (3 - 2x \cot(x) ) u \log u =  0,
+    \quad u(0, t) = 1, u(\pi, t) = 1, u(x, 0) = 1 $. Please place your final solution
+    in a $\boxed{}$ LaTeX Environment. The only remaining parameters in your final
+    solution should be $x$ and $t$; do not define additional parameters or constants.
+    There should be no words inside the $\boxed{}$ environment; only an expression
+    that can be evaluated by subsituting in values of $x$ and $t$.
+  solution: $\boxed{ u(x,t) = \exp(\sin^2(x) t^3 \log(1 + xt)) }$
+  parameters: $x; t$
+- prompt: Find the solution behavior to$u \partial_{xt} u - \partial_x u \partial_t
+    u + t u \partial_x u + (1 + t^2) \sin(2x) u^2 = 0, u(0, t) = e^{-t}, u_t(x, 0)
+    = \cos^2(x)$ in the limit $t \to \infty$Please place your final solution in a
+    $\boxed{}$ LaTeX Environment.
+  solution: $\boxed{e^{\cos(x)^2 t - \log(1 + t^2)}}$
+  parameters: $x; t$
+- prompt: Approximate a self similar traveling wave solution $ \partial_t u = \partial_{xx}
+    u + u(1-u)(u-\frac{1}{4}) + x \left(\partial_t u + \frac{\sqrt{2}}{4} \partial_x
+    u\right)$ in the limit $t \to \infty$. Return one exact expression for u(x,t).
+    Please place your final solution in a $\boxed{}$ LaTeX Environment.If there are
+    multiple solutions please separate them with a ;.
+  solution: $\boxed{u(x,t) = \frac{1}{1+\exp{\left(\frac{x}{\sqrt{2}}-\frac{t}{4}\right)}}}$
+  parameters: $x;t$
+- prompt: Find an approximate analytical solution $u(x, t)$ to the following nonlinear
+    partial differential equation $$u_t + 0.1 (u_x)^2 = u_{xxxx} - 16 u; \quad u(0,
+    t) = 1, u(x, 0) = 0 $$ The solution is sought for $x \ge 0$ and $t \ge 0$.   Derive
+    an approximate analytical solution $u(x, t)$ that captures the dominant behavior
+    in the limit $t \to \infty$. Solve fully, such that the final solution contains
+    only known functions (no undefined functions). Please place your final solution
+    in a \boxed{} LaTeX Environment. If there are any free constants, approximate
+    them numerically. There should be no variable (non-evaluated) constants or free
+    constraints, however. Do not box more than one equation! The approximation should
+    include the zeroth-order term and the first-order correction term accounting for
+    the nonlinearity.
+  solution: $\boxed{u(x, t) \sim \frac{599}{600}e^{-2x} + \frac{1}{600}e^{-4x}}$
+  parameters: $x; t$
+- prompt: Find a solution to the nonlinear partial differential equation $ \partial_t
+    u + \partial_x u = -\left(u + \frac{1}{u}\right) \partial_{xx}u + (x-t)^2 + \frac{1}{x-t}$
+    for its leading-order behavior as $|x-t| \to \infty$. Please place your final
+    solution in a $\boxed{}$ LaTeX Environment.If there are multiple solutions, please
+    separate them with a ;. Do not define additional parameters or constants. There
+    should be no words inside the $\boxed{}$ environment; only an expression that
+    can be evaluated by subsituting in values of $x$ and $t$.
+  solution: $\boxed{u(x,t) \sim \frac{1}{\sqrt{2}} (x-t)^2}$
+  parameters: $x;t$
+- prompt: Find a localized travelling wave solution (soliton) for the nonlinear partial
+    differential equation $u_{tt} - u_{xx} - 8(u^2)_{xx} - u_{xxxx}=0$ subject to
+    the condition that the maximum value is $u(0,0) = 2$.
+  solution: $\boxed{\frac{2}{\cosh^2(2\sqrt{\frac{2}{3}}(x-\sqrt{\frac{35}{3}}t))}}$
+  parameters: $x; t$
+- prompt: Find a localized travelling wave solution (soliton) for the nonlinear partial
+    differential equation $u_{tt} - u_{xx} - 9(u^3)_{xx} - u_{xxxx}=0$ subject to
+    the condition that the maximum value is $u(0,0) = 1$.
+  solution: $\boxed{u(x,t)=\frac{1}{\cosh(\frac{3}{\sqrt{2}}(x+\sqrt{\frac{11}{2}}t))}}$
+  parameters: $x; t$
+- prompt: Solve the following nonlinear partial differential equation $$ \partial_t
+    u + u^2 \partial_x u = \partial_{xx}u - (x-t)^{-2} $$ by finding a travelling
+    wave solution of the form $u(x,t) = U(x-t)$, and determine its leading-order behavior
+    as $x-t \to \infty$. Your final answer should contain only the variables $x$ and
+    $t$. In particular, do not define any new functions or constants. Leave your final
+    answer in a $\boxed{}$ LaTeX environment, so that plugging in values of $x$ and
+    $t$ yield a numerical answer. Replace any absolute value signs with the usual
+    () brackets for easy evaluation.
+  solution: $\boxed{u(x,t) = 1 + (x-t)^{-1/2}}$
+  parameters: $x;t$
+- prompt: Solve the following nonlinear partial differential equation $$\partial_t
+    u + \frac{3}{2} \partial_x u = u^2 \partial_{xx}u + \frac{2}{3}\left(x-\frac{3}{2}t\right)^{-2}$$
+    by finding a travelling wave solution, and determine its leading-order behavior
+    as $|x-\frac{3}{2}t| \to \infty$. Your final answer should contain only the variables
+    $x$ and $t$. In particular, do not define any new functions or constants. Leave
+    your final answer in a $\boxed{}$ LaTeX environment, so that plugging in values
+    of $x$ and $t$ yield a numerical answer. Replace any absolute value signs with
+    the usual () brackets for easy evaluation.
+  solution: $\boxed{\left(2\ln\left(x-\frac{3}{2}t\right)\right)^{1/3}}$
+  parameters: $x;t$
+- prompt: solve$ \partial_t u = (u^3-2(x-2t)) \partial_x u - \partial_x \left( u \partial_x
+    u \right) - (x-2t)^{-3} $as $t\to\infty, u(\pm infty,t)\to 5$ away from any divergences
+    to a nonconstant function. Place one final solution in a $\boxed{}$ LaTeX Environment
+  solution: $\boxed{u(x,t)=-\frac{1}{254 (x-2t)^2}-\frac{2}{16129 (x-2t)}+\frac{4
+    \log (x-2t)}{2048383}-\frac{4 \log (127-2 (x-2t))}{2048383}+5}$
+  parameters: $x;t$
+- prompt: solve$ \partial_t u = u^2 \partial_x u - \partial_x \left( u \partial_x
+    u \right) - (x-2t)^{-3/2} $as $t\to\infty, u(\pm infty,t)\to 5$ away from any
+    divergences to a nonconstant function. Place one final solution in a $\boxed{}$
+    LaTeX Environment
+  solution: $\boxed{u(x,t)=-2(x-2t)^{-1/2}/(2+5^3)+5}$
+  parameters: $x;t$
+- prompt: Suppose we have the following Partial Differential Equation, $\partial_{xxx}u
+    + \partial_{t}u(1-\partial_xu)= 0$, for some function $u(x,t)$.  Please find a
+    travelling wave solution that connects the steady states $u = 1$ in the limit
+    $t \rightarrow -\infty $ and $u = 3$ in the limit $t \rightarrow +\infty$. Place
+    your final solution in a $\boxed{}$ LaTeX Environment.  If there are multiple
+    solutions please separate them with a ;.
+  solution: $\boxed{u(x,t) = 2+\tanh(\frac{3}{2}(x-9t))}$
+  parameters: $x;t$
+- prompt: solve$ \partial_t u = (u^3-2(x-2t)) \partial_x u - \partial_x \left( (u^2+3)
+    \partial_x u \right) - (x-2t)^{-3} $as $t\to\infty, u(\pm infty,t)\to 5$ away
+    from any divergences to a nonconstant function. Place ONE final solution in a
+    $\boxed{}$ LaTeX Environment
+  solution: $\boxed{u(x,t)=-\frac{1}{254 (x-2t)^2}-\frac{2}{16129 (x-2t)}+\frac{4
+    \log (x-2t)}{2048383}-\frac{4 \log (127-2 (x-2t))}{2048383}+5}$
+  parameters: $x;t$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial
+    x} = \frac{\partial^2 u}{\partial x^2} - u^2; x \geq 0, t > 0; u(0, t) = \frac{1}{\sqrt{t}},
+    u(x,0) = 0$ in the limit $t \rightarrow \infty$. Please place your final solution
+    in a $\boxed{}$ LaTeX Environment.DONT USE \operatorname in your boxed solution.
+    If there are multiple solutions please separate them with a ;.
+  solution: $\boxed{u(x,t) = \frac{1}{\sqrt{t}} e^{-x/\sqrt{t}}}$
+  parameters: $x;t$
+- prompt: Find the asymptotic solution with first two leading terms for the non-linear
+    partial differential equation $\frac{\partial u}{\partial t} + u \frac{\partial
+    u}{\partial x} = \frac{\partial^2 u}{\partial x^2} - u^2; x \geq 0, t > 0; u(0,
+    t) = 1, u(x,0) = 0$ in the limit $t \rightarrow \infty$. Please place your final
+    solution in a $\boxed{}$ LaTeX Environment.DONT USE \operatorname in your boxed
+    solution. If there are multiple solutions please separate them with a ;.
+  solution: $\boxed{u(x,t) = \frac{1}{1 + 2.5x} + 0.611 e^{-0.5 x} - \frac{0.509}{1
+    + 2.5x} e^{-0.5 x}}$
+  parameters: $x;t$
+- prompt: Find an approximate analytical solution $u(x, t)$ to the following nonlinear
+    partial differential equation $u_t +0.1(u_x)^2+0.05uu_{xx} = u_{xxxx}-16u+0.2e^{-3x},
+    \quad u(0,t)=1, u(x,0)=0 $ The solution is sought for $x \ge 0$ and $t \ge 0$.   Derive
+    an approximate analytical solution $u(x, t)$ that captures the dominant behavior
+    in the limit $t \to \infty$. Solve fully, such that the final solution contains
+    only known functions (no undefined functions). Please place your final solution
+    in a \boxed{} LaTeX Environment. If there are any free constants, approximate
+    them numerically. There should be no variable (non-evaluated) constants or free
+    constraints, however. Do not box more than one equation! The approximation should
+    include the zeroth-order term and the first-order correction term accounting for
+    the nonlinearity.
+  solution: $\boxed{$u(x,t)=0.9994170441764800e^{-2x}+0.003076923076923077e^{-3x}-0.002484639053254438e^{-4x}-0.000009318214941557116e^{-5x}-0.000000009985207100591716e^{-6x}}$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $u_t - u_{xx} - u^3 = (1-2t)\cos(x)e^{-t^2} - \cos^3(x)e^{-3t^2},
+    u(x,0) = \cos(x)$ in the limit N/A. Please place your final solution in a $\boxed{}$
+    LaTeX Environment.DONT USE \operatorname in your boxed solution. There should
+    be a free parameter $v$. Set $v=0.5$ YOU MUST DO THIS. If there are multiple solutions
+    please separate them with a ;.
+  solution: $\boxed{u(x,t) = \cos(x) e^{-t^2}}$
+  parameters: $x; t$
+- prompt: Find a nontrivial self similarity solution (soliton behaviour) for the non-linear
+    partial differential equation  $$ \partial_t u + \left(\frac{45}{16} u^{1/2} -
+    \frac{3}{2} u\right)\partial_x u + \partial_x^3 u=0 $$  The wave is assumed to
+    travel with velocity $v=0.5$. The boundary condition is $\lim_{|x|\to\infty} u(x,t)=0$.
+    Consider this in the limit "$t\rightarrow\infty$".  Please place your final solution
+    in a $\boxed{}$ LaTeX Environment. If there are multiple solutions, please separate
+    them with a ";". If there exist forms in terms of exponential for functions in
+    the output, then you should use them.
+  solution: $\boxed{u(x,t) = \frac{16}{\left(6 + e^{\frac{x-0.5t}{2\sqrt{2}}} + e^{-\left(\frac{x-0.5t}{2\sqrt{2}}\right)}\right)^2}}$
+  parameters: $x; t; t_0$
+- prompt: Find a self-similar solution to $$u_t=(u^2)_{xx}$$ for $$x\in \mathbb{R},
+    t>0$$. The only remaining parameters in your final solution should be $x$ and
+    $t$; do not define additional parameters or constants. Box your final answer.
+  solution: $$\boxed{u(x,t)=t^{-1/3}\cdot\max\{1-\frac{x^2}{12t^{2/3}},0\}}$$
+  parameters: $x; t$
+- prompt: "For the nonlinear PDE $$u_t + 6u\\cdot u_x + u_{xxx} = 0$$ with $x\\in\
+    \ [-L,L] \\ \\text{(periodic)}, \\ t>0$, seek a traveling\u2010wave solution.\
+    \ The only remaining parameters in your final solution should be $x$ and $t$;\
+    \ do not define additional parameters or constants. Box your final answer."
+  solution: $$\boxed{u(x,t) = \frac{1}{2}\cdot\text{sech}^2\left(\frac{1}{2}\cdot(x
+    - t)\right)}$$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behavior) for the non-linear partial
+    differential equation $ \partial_t u + u^2 \partial_x u + \partial_x^3 u = 0 $
+    in the limit $t\to\infty$. Please place your final solution in a $\boxed{}$ LaTeX
+    Environment. There should be a free parameter $v$. Set $v=6$. If there are multiple
+    solutions please separate them with a ;.
+  solution: $$\boxed{u(x,t) = 6 \sech{\left( \sqrt{6} (x - 6t) \right)}}$$
+  parameters: $x; t; v$
+- prompt: Find a self similarity solution (soliton behavior) for the non-linear partial
+    differential equation $ \partial_t u + u^{1/2} \partial_x u + 1.5\partial_x^3
+    u = 0 $ in the limit $t\to\infty$. Please place your final solution in a $\boxed{}$
+    LaTeX Environment. There should be a free parameter $v$. Set $v=0.5$. If there
+    are multiple solutions please separate them with a ;.
+  solution: $$\boxed{u(x,t) = \frac{225}{256} \sech^4\left( \frac{\sqrt{3}}{12}(x
+    - 0.5t) \right)}$$
+  parameters: $x; t; v$
+- prompt: Find a self similarity solution (soliton behavior) for the non-linear partial
+    differential equation $ \partial_t u + u^{3/2} \partial_x u + \partial_x^3 u =
+    0 $ in the limit $t\to\infty$. Please place your final solution in a $\boxed{}$
+    LaTeX Environment. There should be a free parameter $v$. Set $v=0.5$. If there
+    are multiple solutions please separate them with a ;.
+  solution: $$\boxed{u(x,t) = ( \frac{35}{16} )^{2/3} \sech^{4/3}( \frac{3\sqrt{2}}{8}(x
+    - 0.5t) )}$$
+  parameters: $x; t; v$
+- prompt: Find a self similarity solution (soliton behavior) for the non-linear partial
+    differential equation $ \partial_t u + 2u^{1/2} \partial_x u + \partial_x^3 u
+    = 0 $ in the limit $t\to\infty$. Please place your final solution in a $\boxed{}$
+    LaTeX Environment. There should be a free parameter $v$. Set $v=0.5$. If there
+    are multiple solutions please separate them with a ;.
+  solution: $$\boxed{u(x,t) = \frac{225}{1024} \sech^4\left( \frac{\sqrt{2}}{8}(x
+    - 0.5t) \right) }$$
+  parameters: $x; t; v$
+- prompt: Find the self-similar (soliton-like) solution $u(x,t)$ for the nonlinear
+    partial-differential equation $$ \frac{\partial u}{\partial t} + u\frac{\partial
+    u}{\partial x} = \frac{\partial^2 u}{\partial x^2} - u^3, u(0,t)=1, u(x,0)=0,
+    x\ge 0, t>0 $$  in the limit $t\to\infty$
+  solution: $$ \boxed{U(x)=\frac{1}{1+\frac{1}{2}x}} $$
+  parameters: $x$
+- prompt: Find the self-similar (soliton-like) solution $u(x,t)$ for the nonlinear
+    partial-differential equation $$\partial_t u + u^{1/2}\,\partial_x u = \partial_{xx}u
+    - 2.5\,u^2, u(0,t)=1, u(x,0)=0,\;x\ge0,\;t>0$$ in the limit $t\to\infty$
+  solution: $$ \boxed{U(x)=\frac{1}{(1+0.5\,x)^{2}}} $$
+  parameters: $x$
+- prompt: Find a traveling wave solution to the Fisher's equation:$$\frac{\partial
+    u}{\partial t} = D \frac{\partial^2 u}{\partial x^2} + r u (1-u)$$that connects
+    the stable states u=0 and u=1 on the boundary condition $ U(-\infty) = 1, \quad
+    U(+\infty) = 0 $
+  solution: $$\boxed{u(x, t) = \frac{1}{2} \left( 1 - \tanh\left( \sqrt{\frac{r}{8D}}
+    \left( x - 3\sqrt{\frac{rD}{2}} t \right) \right) \right)}$$
+  parameters: $x$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $$\partial_t u = partial_{xx} u + u^2 - u; u(x;0) = 0.1
+    \quad (|x| \leq 3), u(x;0) = 0 \quad (|x| \gt 3); \lim_{x \to -\infty} u(x,t)
+    = 0, \quad \lim_{x \to \infty} u(x,t) = 0$$ in the limit $t\to\infty$. Please
+    place your final solution in a $\boxed{}$ LaTeX Environment.DONT USE \operatorname
+    in your boxed solution. There should be a free parameter $v$. Set $v=0.5$ YOU
+    MUST DO THIS. If there are multiple solutions please separate them with a ;.
+  solution: $$\boxed{\frac{0.6}{\sqrt{4 \pi t}} e^{-t} e^{-\frac{x^2}{4t}}}$$
+  parameters: $x; t$
+- prompt: Find a self similarity solution (soliton behvaiour) for the non-linear partial
+    differential equation $$\partial_{t} u = \partial_{xx} u - 1.5 \, \partial_{x}
+    u + 0.2 \, u, \quad u(x,0) = \frac{1}{\sqrt{0.1}} e^{-\frac{x^2}{0.4}}, \quad
+    u(+\infty,t) = u(-\infty,t) = 0$$.
+  solution: $$\boxed{\frac{1}{\sqrt{t+0.1}} e^{-\frac{(x-1.5t)^2}{4(t+0.1)} + 0.2t}}$$
+  parameters: $x; t$
+- prompt: Find a nontrivial self similarity solution (soliton behaviour) for the non-linear
+    partial differential equation $$ \partial_t u + \left(\frac{15}{8} u^{1/2} + \frac{9}{4}
+    u\right)\partial_x u + \partial_x^3 u=0 $$  The wave is assumed to travel with
+    velocity $v=0.5$. The boundary condition is $\lim_{|x|\to\infty} u(x,t)=0$. Consider
+    this in the limit "$t\rightarrow\infty$".  Please place your final solution in
+    a $\boxed{}$ LaTeX Environment. If there are multiple solutions, please separate
+    them with a ";". If there exist expressions in terms of exponential for functions
+    in the output, then you should use them. Do not use $\operatorname$ in the solution
+  solution: $$ \boxed{u(x,t) = \frac{40}{\left(2\sqrt{10}+5e^{\frac{x-0.5t}{2\sqrt{2}}}
+    + 5e^{-\left(\frac{x-0.5t}{2\sqrt{2}}\right)}\right)^2} ; u(x,t)=0} $$
+  parameters: $x; t; v$
+- prompt: Find the self similarity solution for the nonlinear partial differential
+    equation $$\partial_t = \partial_x (u^3 \partial_xu) $$  Where the initial shape
+    of the solution is $u(x, t)=u(x,  0)= 0.9 * \exp(-x^2 /2)$  There should be a
+    free parameter A in the solution which you should set to $A =1.1$. Please put
+    your final solution in a $\boxed{}$ LaTeX Environment.
+  solution: $$\boxed{u(x,t) = \frac{1}{(5t)^{\frac{1}{5}}}   \sqrt[3]{-\frac{3}{2}\left(\frac{x}{(5t)^{\frac{1}{5}}}\right)^2
+    + A}}$$
+  parameters: $x; t; A$
+- prompt: Find the solution for the nonlinear partial differential equation $$\partial_t
+    u = \partial_{xx}u + u^2 (1 - u^2)$$
+  solution: $$\boxed{u(x,t)=\tanh( \frac{1}{\sqrt{2}}(x - \sqrt{2}t))}$$
+  parameters: $x; t$
+- prompt: Find a traveling-wave solution to $u_t = -u_{xx} - 2 u u_x^2/(1 - u^2)$,
+    such that $u \rightarrow 0$ as $t \rightarrow \infty$, $u \rightarrow 1$ as $t
+    \rightarrow -\infty$, $u(0,0) - 0.76159 < 0.01$, and $u_x(0,0) - 0.41997 < 0.01$.
+    Please place your final solution in a $\boxed{}$ LaTeX Environment. The only remaining
+    parameters in your final solution should be $x$ and $t$; do not define additional
+    parameters or constants.
+  solution: $$\boxed{u(x,t) = \tanh(e^{x - t})}$$
+  parameters: $x; t$
+- prompt: Find a localized travelling wave solution (soliton) for the nonlinear partial
+    differential equation $2u_{tt} - 3u_{xx} - 6(u^2)_{xx} - 5u_{xxxx}=0$ subject
+    to the condition that the maximum value is $u(0,0) = 13$. Please place your final
+    solution in a $\boxed{}$ LaTeX Environment.
+  solution: $$ \boxed{ u(x,t) = 13\,\mathrm{sech}^2\left(\sqrt{\frac{13}{5}}\left(x-\sqrt{\frac{55}{2}}t\right)\right)
+    } $$
+  parameters: $x; t$
+- prompt: Find a self-similar solution to $$u_t=(u^5)_{xx}$$ for $$x\in \mathbb{R},
+    t>0$$. The only remaining parameters in your final solution should be $x$ and
+    $t$; do not define additional parameters or constants. Please place your final
+    solution in a $\boxed{}$ LaTeX Environment.
+  solution: $$\boxed{u(x,t)=t^{-1/6}\cdot\max\{1-\frac{x^2}{15t^{1/3}},0\}}$$
+  parameters: $x; t$
+- prompt: 'Find a self-similarity solution for the non-linear partial differential
+    equation: $d_t u = d_{xx}u + u(u - \alpha)(1 - u)$ where $\alpha$ is a constant
+    such that $0 < \alpha < 1/2$. The solution connects $u=1$ ($t \rightarrow -\infty$)
+    to $u=0$ ($t \rightarrow +\infty$). Determine the wave speed $c$ in terms of $\alpha$.
+    Then, find the explicit form of the solution $u(x,t)$ given the initial condition
+    $u(0,0) = \frac{1}{1+e^{\sqrt{2}/2}}$ and assuming $\alpha = 1/4$.'
+  solution: $$ \boxed{c(\alpha) = \frac{1-2\alpha}{\sqrt{2}}} $$;$$ \boxed{u(x,t)
+    = \frac{1}{1+e^{\frac{1}{\sqrt{2}}(-x + \frac{\sqrt{2}}{4}t + 1)}}} $$
+  parameters: $x; t; \alpha$
+- prompt: Find a self-similarity solution for $$ \partial_t u = \partial_{xx}(u^2)
+    - \partial_{xxxx}u + (\partial_x u)^2 $$ with maximum value at $u(0,0) = 1$.
+  solution: $$ \boxed{ u(x,t) = (t+K_0^2)^{-1/2} f_s\left( \frac{x}{(t+K_0^2)^{1/4}}
+    \right) } $$
+  parameters: $x; t;K_0;f_s$

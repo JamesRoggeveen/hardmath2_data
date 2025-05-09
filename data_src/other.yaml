@@ -1,0 +1,57 @@
+meta:
+  name: Other
+  date: '2025-05-08'
+type: other
+problems:
+- prompt: Approximate the expectation of the solution of SDE $$dX_t = \Bigl(-\frac{\sin(t^{-1/2})}{t^2}-\frac{1+\tfrac1t}{2t^{3/2}}\cos(t^{-1/2})-\frac{B_t}{2t^{3/2}}+\frac1{t+1}+B_t^2\bigl(6t^{-3}-\frac1{(t+1)^2}\bigr)-3\frac{B_t^4}{t^4}\Bigr)\,dt
+    + \Bigl(\frac1{\sqrt t}+\frac{2B_t}{t+1}+\frac{4B_t^3}{t^3}\Bigr)\,dB_t.$$ in
+    the limit $t \to \infty$ Please provide your answer in LaTeX \boxed{} environment.
+    Final answer should be in closed form and parsable. I don't want any self-defined
+    constants other than e and \pi. I don't want to have any short-cut function you
+    used throughout the solution in the final solution either. The solution should
+    solely be a function of t.
+  solution: $\boxed{\frac{1}{1 + \sqrt{t}}}$
+  parameters: $t$
+- prompt: Approximate the expectation function of the solution of SDE $dX_t = \Bigl[\bigl(\frac1t-\frac1{t^2}+\frac2{t^3}\bigr)+\ln(t)\bigl(\frac1{t^2}-\frac4{t^3}\bigr)-\tfrac12\ln(t)\bigl(1-\frac1t+\frac2{t^2}\bigr)\Bigr]\cos(B_t)\,dt
+    - \ln(t)\bigl(1-\frac1t+\frac2{t^2}\bigr)\sin(B_t)\,dB_t$ in the limit $ t > 0$
+    Please provide your answer in LaTeX \boxed{} environment. Final answer should
+    be in closed form and parsable. I don't want any self-defined constants other
+    than e and \pi. I don't want to have any short-cut function you used throughout
+    the solution in the final solution either. The solution should solely be a function
+    of t.
+  solution: $\boxed{e^{-\frac{t}{2}} \ln(t) (1 - \frac{1}{t} + \frac{2}{t^2})}$
+  parameters: $t$
+- prompt: Approximate the expectation function of the solution of SDE $$dX_t=\exp\bigl(\sqrt{t}\sin(2t)\,B_t\bigr)\Bigl(-\frac{2t}{(1+t^2)^2}+\frac{B_t}{1+t^2}\Bigl(\frac{\sin(2t)}{2\sqrt{t}}+2\sqrt{t}\cos(2t)\Bigr)+\frac{(\sqrt{t}\sin(2t))^2}{2(1+t^2)}\Bigr)\,dt+\frac{\sqrt{t}\sin(2t)}{1+t^2}\exp\bigl(\sqrt{t}\sin(2t)\,B_t\bigr)\,dB_t$$  in
+    the limit $t \to \infty$ Please provide your answer in LaTeX \boxed{} environment.
+    Final answer should be in closed form and parsable. I don't want any self-defined
+    constants other than e and \pi. I don't want to have any short-cut function you
+    used throughout the solution in the final solution either. The solution should
+    solely be a function of t.
+  solution: $\boxed{u(x,t) = \frac{1}{1 + t^2} e^{t^2 \sin^2(2t)}}$
+  parameters: $t$
+- prompt: Approximate the expectation function of the solution of SDE $$dX_t=\exp\bigl(\cos(t)B_t\bigr)\Bigl(-\frac{2t}{(1+t^2)^2}-\frac{B_t\sin(t)}{1+t^2}+\frac{\cos^2(t)}{2(1+t^2)}\Bigr)\,dt+\frac{\cos(t)}{1+t^2}\exp\bigl(\cos(t)B_t\bigr)\,dB_t.$$
+    in the limit $t \to \infty$ Please provide your answer in LaTeX \boxed{} environment.
+    Final answer should be in closed form and parsable. I don't want any self-defined
+    constants other than e and \pi. I don't want to have any short-cut function you
+    used throughout the solution in the final solution either. The solution should
+    solely be a function of t. Do not use \exp, but just explicitly write e^.
+  solution: $\boxed{\frac{1}{1 + t^2} e^{\frac{t}{2}\cos^2(t)}}$
+  parameters: $t$
+- prompt: Approximate the expectation function of the solution of SDE $$dX_t =\exp\!\Bigl(\tfrac{\sqrt2\,\sin(t)}{t^{1/4}}\,B_t\Bigr)\Bigl(-\frac{2t}{(1+t^2)^2}+\frac{B_t}{1+t^2}\Bigl(\frac{\sqrt2\,\cos(t)}{t^{1/4}}-\frac{\sqrt2\,\sin(t)}{4\,t^{5/4}}\Bigr)+\frac{\sin^2(t)}{t^{1/2}(1+t^2)}\Bigr)\,dt+\frac{\sqrt2\,\sin(t)}{t^{1/4}(1+t^2)}\exp\!\Bigl(\tfrac{\sqrt2\,\sin(t)}{t^{1/4}}\,B_t\Bigr)\,dB_t.$$
+    in the limit $t \to \infty$ Please provide your answer in LaTeX \boxed{} environment.
+    Final answer should be in closed form and parsable. I don't want any self-defined
+    constants other than e and \pi. I don't want to have any short-cut function you
+    used throughout the solution in the final solution either. The solution should
+    solely be a function of t. Do not use \exp, but just explicitly write e^.
+  solution: $\boxed{\frac{1}{1 + t^2} e^{\sqrt{t} \sin^2(t)}}$
+  parameters: $t$
+- prompt: Approximate the expectation function of the solution of SDE $$ dX_t=\exp\Bigl(\tfrac{t}{\sqrt3}\sin\bigl(\tfrac{t}{3}\bigr)B_t\Bigr)\Bigl(-\tfrac{2B_t^2}{t^3(1+t^2)}-\tfrac{2t(1+\tfrac{B_t^2}{t^2})}{(1+t^2)^2}+\tfrac{(1+\tfrac{B_t^2}{t^2})B_t}{1+t^2}(\tfrac{\sin\tfrac{t}{3}}{\sqrt3}+\tfrac{t\cos\tfrac{t}{3}}{3\sqrt3})+\tfrac12\tfrac{1+\tfrac{B_t^2}{t^2}}{1+t^2}\tfrac{t^2}{3}\sin^2\bigl(\tfrac{t}{3}\bigr)\Bigr)\,dt+\tfrac{1+\tfrac{B_t^2}{t^2}}{1+t^2}\tfrac{t}{\sqrt3}\sin\bigl(\tfrac{t}{3}\bigr)\exp\Bigl(\tfrac{t}{\sqrt3}\sin\bigl(\tfrac{t}{3}\bigr)B_t\Bigr)\,dB_t.$$
+    in the limit $t \to \infty$ Please provide your answer in LaTeX \boxed{} environment.
+    Final answer should be in closed form and parsable. I don't want any self-defined
+    constants other than e and \pi. I don't want to have any short-cut function you
+    used throughout the solution in the final solution either. The solution should
+    solely be a function of t. Do not use \exp, but just explicitly write e^. Do not
+    use X_0. Do not use enlarge any parenthesis. Keep paranthesis () without modifying
+    anything
+  solution: $\boxed{\frac{1}{1 + t^2} e^{\frac{t^3}{6} \sin^2(t/3)}}$
+  parameters: $t$
