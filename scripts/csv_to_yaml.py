@@ -1,6 +1,7 @@
 import pandas as pd
 import yaml
 import os
+from datetime import datetime
 
 def find_csv_files(csv_dir):
     csv_list = []
@@ -9,13 +10,24 @@ def find_csv_files(csv_dir):
             csv_list.append(file[:-4])
     return csv_list
 
+def ensure_dollars(s: str) -> str:
+    """Make sure s starts and ends with a dollar sign."""
+    if not s.startswith('$'):
+        s = '$' + s
+    if not s.endswith('$'):
+        s = s + '$'
+    return s
+
 def convert_csv_to_yaml_fmt(csv_file):
     df = pd.read_csv(csv_file)
     # Find the verified column
     verified_col = df.columns[df.columns.str.contains('Verified', case=False)][0]
     
-    # Filter rows where verified is 'yes' (case insensitive)
-    df_filtered = df[df[verified_col].str.lower() == 'yes']
+    # Filter rows where verified contains 'yes' (case insensitive)
+    df_filtered = df[
+        df[verified_col]
+        .str.contains('yes', case=False, na=False)
+    ]
     
     # Select required columns
     problems = df_filtered[['Prompt', 'Solution', 'Parameters']].rename(columns=str.lower)
@@ -23,10 +35,20 @@ def convert_csv_to_yaml_fmt(csv_file):
     # Convert to YAML
     yaml_data = []
     for _, row in problems.iterrows():
+        # Handle NaN values in prompt
+        prompt = row['prompt']
+        if pd.isna(prompt) or str(prompt).strip() == "":
+            continue
+            
+        prompt = str(prompt).replace('\n', ' ').strip(' "\'')
+        solution = str(row['solution']).replace('\n', ' ').strip(' "\'')
+        parameters = str(row['parameters']).replace('\n', ' ').strip(' "\'')
+        solution = ensure_dollars(solution)
+        parameters = ensure_dollars(parameters)
         problem = {
-            'prompt': row['prompt'],
-            'solution': row['solution'],
-            'parameters': row['parameters']
+            'prompt': prompt,
+            'solution': solution,
+            'parameters': parameters
         }
         yaml_data.append(problem)
     return yaml_data
@@ -37,7 +59,7 @@ def write_yaml_file(yaml_data, csv_name):
     yaml_doc = {
         'meta': {
             'name': csv_name.replace('_',' ').title(),
-            'date': '2025-05-03'  # Placeholder date matching example
+            'date': datetime.now().strftime('%Y-%m-%d')
         },
         'type': csv_name.lower(),
         'problems': yaml_data
