@@ -20,8 +20,7 @@ problems:
     Provide your answer in a $\boxed{}$ latex environment.
   solution: $\boxed{I(x)=(1/x)(1-e^{-\frac{x \pi}{4}}) }$
   parameters: $x; t$
-- prompt: Find a single expression with the first three terms in the asymptotic series
-    of "&B37&" in the limit "&C37&". Provide your answer in a $\boxed{}$ latex environment.
+- prompt: Find a single expression with the first three terms in the asymptotic series of I(x) = \int\limits_{0}^{x} \frac{\sin t}{t} \ dt in the limit $x \to \infty$. Provide your answer in a $\boxed{}$ latex environment.
   solution: $\boxed{I(x)=\frac{\pi}{2} - \frac{\cos x}{x} + \frac{\sin x}{x^2}}$
   parameters: $x; t$
 - prompt: Write the first two term asymptotic series of $I(x) = \int^\infty_x \frac{e^{-t^2}}{1+t^5}
